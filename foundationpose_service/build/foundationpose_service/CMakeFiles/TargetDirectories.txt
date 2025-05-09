@@ -1,0 +1,10 @@
+/home/d30031852276/wh134_dev/realsense/dros/foundationpose_service/build/foundationpose_service/CMakeFiles/uninstall.dir
+/home/d30031852276/wh134_dev/realsense/dros/foundationpose_service/build/foundationpose_service/CMakeFiles/foundationpose_service_uninstall.dir
+/home/d30031852276/wh134_dev/realsense/dros/foundationpose_service/build/foundationpose_service/CMakeFiles/main.dir
+/home/d30031852276/wh134_dev/realsense/dros/foundationpose_service/build/foundationpose_service/CMakeFiles/test.dir
+/home/d30031852276/wh134_dev/realsense/dros/foundationpose_service/build/foundationpose_service/CMakeFiles/edit_cache.dir
+/home/d30031852276/wh134_dev/realsense/dros/foundationpose_service/build/foundationpose_service/CMakeFiles/rebuild_cache.dir
+/home/d30031852276/wh134_dev/realsense/dros/foundationpose_service/build/foundationpose_service/CMakeFiles/list_install_components.dir
+/home/d30031852276/wh134_dev/realsense/dros/foundationpose_service/build/foundationpose_service/CMakeFiles/install.dir
+/home/d30031852276/wh134_dev/realsense/dros/foundationpose_service/build/foundationpose_service/CMakeFiles/install/local.dir
+/home/d30031852276/wh134_dev/realsense/dros/foundationpose_service/build/foundationpose_service/CMakeFiles/install/strip.dir

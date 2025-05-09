@@ -1,0 +1,4 @@
+source;share/dros_common_interfaces/local_setup.bash
+source;share/dros_common_interfaces/local_setup.dsv
+source;share/dros_common_interfaces/local_setup.sh
+source;share/dros_common_interfaces/local_setup.zsh

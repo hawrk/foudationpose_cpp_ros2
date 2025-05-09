@@ -1,0 +1,5 @@
+/home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces/rosidl_adapter/dros_common_interfaces:msg/IMUInfo.idl
+/home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces/rosidl_adapter/dros_common_interfaces:msg/Extrinsics.idl
+/home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces/rosidl_adapter/dros_common_interfaces:msg/Metadata.idl
+/home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces/rosidl_adapter/dros_common_interfaces:msg/RGBD.idl
+/home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces/rosidl_adapter/dros_common_interfaces:srv/DeviceInfo.idl

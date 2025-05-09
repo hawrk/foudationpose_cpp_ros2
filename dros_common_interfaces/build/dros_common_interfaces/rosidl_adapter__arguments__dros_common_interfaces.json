@@ -1,0 +1,10 @@
+{
+  "package_name": "dros_common_interfaces",
+  "non_idl_tuples": [
+    "/home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces:msg/realsense/IMUInfo.msg",
+    "/home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces:msg/realsense/Extrinsics.msg",
+    "/home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces:msg/realsense/Metadata.msg",
+    "/home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces:msg/realsense/RGBD.msg",
+    "/home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces:srv/realsense/DeviceInfo.srv"
+  ]
+}

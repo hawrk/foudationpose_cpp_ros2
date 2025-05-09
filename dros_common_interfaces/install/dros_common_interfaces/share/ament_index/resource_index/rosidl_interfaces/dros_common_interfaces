@@ -1,0 +1,12 @@
+msg/Extrinsics.idl
+msg/IMUInfo.idl
+msg/Metadata.idl
+msg/RGBD.idl
+realsense/DeviceInfo.srv
+realsense/DeviceInfo_Request.msg
+realsense/DeviceInfo_Response.msg
+realsense/Extrinsics.msg
+realsense/IMUInfo.msg
+realsense/Metadata.msg
+realsense/RGBD.msg
+srv/DeviceInfo.idl

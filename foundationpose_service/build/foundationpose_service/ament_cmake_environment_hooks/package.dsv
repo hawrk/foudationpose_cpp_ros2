@@ -1,0 +1,4 @@
+source;share/foundationpose_service/local_setup.bash
+source;share/foundationpose_service/local_setup.dsv
+source;share/foundationpose_service/local_setup.sh
+source;share/foundationpose_service/local_setup.zsh

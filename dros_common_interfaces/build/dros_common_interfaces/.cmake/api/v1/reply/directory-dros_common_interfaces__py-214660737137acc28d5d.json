@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "dros_common_interfaces__py",
+		"source" : "build/dros_common_interfaces/dros_common_interfaces__py"
+	}
+}

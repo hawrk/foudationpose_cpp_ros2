@@ -1,0 +1,25 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from dros_common_interfaces/msg/realsense/RGBD.msg
+// generated code does not contain a copyright notice
+
+#include "sensor_msgs/msg/CameraInfo.idl"
+#include "sensor_msgs/msg/Image.idl"
+#include "std_msgs/msg/Header.idl"
+
+module dros_common_interfaces {
+  module msg {
+    @verbatim (language="comment", text=
+      "RGBD Message")
+    struct RGBD {
+      std_msgs::msg::Header header;
+
+      sensor_msgs::msg::CameraInfo rgb_camera_info;
+
+      sensor_msgs::msg::CameraInfo depth_camera_info;
+
+      sensor_msgs::msg::Image rgb;
+
+      sensor_msgs::msg::Image depth;
+    };
+  };
+};
