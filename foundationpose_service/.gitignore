@@ -1,0 +1,5 @@
+# Ignore colcon build outputs
+build/
+install/
+log/
+

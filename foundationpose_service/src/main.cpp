@@ -1,5 +1,7 @@
 #include <rclcpp/rclcpp.hpp>
 #include "dros_common_interfaces/msg/rgbd.hpp"
+#include "geometry_msgs/msg/pose_stamped.hpp"
+
 
 
 #include "detection_6d_foundationpose/foundationpose.hpp"
