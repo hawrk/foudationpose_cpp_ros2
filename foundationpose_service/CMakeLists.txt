@@ -15,8 +15,10 @@ find_package(rclcpp REQUIRED)
 find_package(cv_bridge REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
+find_package(Eigen3 REQUIRED)
 find_package(OpenCV REQUIRED)  # 添加 OpenCV
 find_package(dros_common_interfaces REQUIRED)
+find_package(glog REQUIRED)
 
 include_directories(
   include
@@ -38,8 +40,6 @@ target_compile_options(main PRIVATE
   $<$<COMPILE_LANGUAGE:CUDA>:--diag-suppress=20012>
 )
 
-
-
 ament_target_dependencies(
   main
   rclcpp
@@ -47,6 +47,7 @@ ament_target_dependencies(
   sensor_msgs
   cv_bridge
   OpenCV
+  Eigen3
   dros_common_interfaces
 )
 
