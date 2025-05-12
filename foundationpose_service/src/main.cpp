@@ -14,6 +14,7 @@
 
 #include <glog/logging.h>
 
+#include "foundationpose_service/help_func.hpp"
 #include "detection_6d_foundationpose/foundationpose.hpp"
 #include "trt_core/trt_core.h"
 
@@ -126,6 +127,7 @@ class FoundationPoseService : public rclcpp::Node
       }
 
       for (auto& [foundation_pose, mesh_loader] : this->model_to_track_) {
+        depth_img.convertTo(depth_img, CV_32FC1, 0.001);
         foundation_pose->Track(rgb_img.clone(), depth_img, out_pose, demo_name_, track_pose);
         LOG(WARNING) << "Track Pose : " << track_pose;
       }
@@ -244,6 +246,7 @@ class FoundationPoseService : public rclcpp::Node
         cv::Mat color, depth;
         color = cv_bridge::toCvCopy(response->rgb_out, "rgb8")->image;
         depth = cv_bridge::toCvCopy(response->depth_out, "32FC1")->image;
+        depth /= 1000.f;  // Convert to meters
   
         std::string filename = "./det_res/mask_" + std::to_string(i) + "_" + result.mask_type + ".png";
         cv::imwrite(filename, mask);
@@ -253,9 +256,18 @@ class FoundationPoseService : public rclcpp::Node
           i, result.label.c_str(), result.mask_type.c_str(), result.score);
         
         if (result.mask_type == this->obj_type_to_grasp[this->type_num_track]){
+          std::cout << "Found object: " << mesh_files[this->type_num_track] << std::endl;
           auto [foundation_pose, mesh_loader] = this->CreateModel(mesh_files[this->type_num_track], this->rgb_K);
           foundation_pose->Register(color.clone(), depth, mask, demo_name_, out_pose, refine_itr_);
           LOG(WARNING) << "first Pose : " << out_pose;
+
+          Eigen::Vector3f object_dimension = mesh_loader->GetObjectDimension();
+          cv::Mat regist_plot = color.clone();
+          cv::cvtColor(regist_plot, regist_plot, cv::COLOR_RGB2BGR);
+          auto draw_pose = ConvertPoseMesh2BBox(out_pose, mesh_loader);
+          draw3DBoundingBox(this->rgb_K, draw_pose, 720, 1280, object_dimension, regist_plot);
+          cv::imwrite("./det_res/test_foundationpose_plot.png", regist_plot);
+
           this->model_to_track_.emplace_back(foundation_pose, mesh_loader);
         }
       }
