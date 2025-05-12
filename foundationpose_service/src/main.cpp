@@ -1,9 +1,12 @@
 #include <rclcpp/rclcpp.hpp>
 #include "dros_common_interfaces/msg/rgbd.hpp"
+#include "auto_sam_interfaces/srv/segment_rgbd.hpp"
 
 #include "geometry_msgs/msg/pose_stamped.hpp"
 #include <cv_bridge/cv_bridge.h>
 #include <sensor_msgs/image_encodings.hpp>
+#include "sensor_msgs/msg/image.hpp"
+#include "sensor_msgs/msg/camera_info.hpp"
 
 #include <opencv2/opencv.hpp>
 #include <Eigen/Core>
@@ -14,17 +17,13 @@
 #include "detection_6d_foundationpose/foundationpose.hpp"
 #include "trt_core/trt_core.h"
 
+#include <filesystem>
+#include <algorithm>
+
 using namespace inference_core;
 using namespace detection_6d;
 
-// static const std::string refiner_engine_path_ = "../models/refiner_hwc_dynamic_fp16.engine";
-// static const std::string scorer_engine_path_  = "../models/scorer_hwc_dynamic_fp16.engine";
-// static const std::string demo_data_path_      = "../test_data/mustard0";
-// static const std::string demo_textured_obj_path = demo_data_path_ + "/mesh/textured_simple.obj";
-// // static const std::string demo_textured_map_path = demo_data_path_ + "/mesh/texture_map.png";
-static const std::string demo_name_             = "mustard";
-// static const std::string frame_id               = "1581120424100262102";
-// static const size_t      refine_itr             = 1;
+static const std::string demo_name_ = "fdp_ros2";
 
 class FoundationPoseService : public rclcpp::Node
 {
@@ -32,25 +31,29 @@ class FoundationPoseService : public rclcpp::Node
     FoundationPoseService(const std::string& name):Node(name) {
       RCLCPP_INFO(this->get_logger(), "启动节点 :%s", name.c_str());
 
+      client_ = this->create_client<auto_sam_interfaces::srv::SegmentRGBD>("segment_rgbd");
+      while (!client_->wait_for_service(std::chrono::seconds(1))) {
+        RCLCPP_INFO(this->get_logger(), "Waiting for SegmentRGBD service...");
+      }
+
       sub_rgbd_ = this->create_subscription<dros_common_interfaces::msg::RGBD>(
         "camera/rgbd", 10, std::bind(&FoundationPoseService::rgbd_callback, this, std::placeholders::_1));
 
       // 初始化参数
       this->declare_parameter<std::string>("refiner_engine_path", "../models/refiner_hwc_dynamic_fp16.engine");
       this->declare_parameter<std::string>("scorer_engine_path", "../models/scorer_hwc_dynamic_fp16.engine");
-      this->declare_parameter<std::string>("object_mesh_path", "../test_data/mustard0/mesh/textured_simple.obj");
       this->declare_parameter<int>("refine_iterations", 1);
-      this->declare_parameter<std::string>("camera_intrinsics_path", "../test_data/mustard0/cam_K.txt");
 
       refiner_engine_path_ = this->get_parameter("refiner_engine_path").as_string();
       scorer_engine_path_ = this->get_parameter("scorer_engine_path").as_string();
-      demo_textured_obj_path_ = this->get_parameter("object_mesh_path").as_string();
       refine_itr_ = this->get_parameter("refine_iterations").as_int();
-      camera_intrinsics_path_ = this->get_parameter("camera_intrinsics_path").as_string();
 
-      std::tie(foundation_pose, mesh_loader) = this->CreateModel();
-      object_dimension = mesh_loader->GetObjectDimension();
-      out_pose = Eigen::Matrix4f::Identity(); 
+      for (const auto& mask_type : obj_type_to_grasp) {
+        std::string cad_dir = template_dir + "/" + mask_type + "/cad";
+        auto paths = mesh_file_path_valid(cad_dir);
+        if (!paths.empty())
+          mesh_files.push_back(paths.front());  // 只取第一个文件
+      }
 
       // 发布检测结果
       pub_pose_ = this->create_publisher<geometry_msgs::msg::PoseStamped>("foundationpose/pose", 10);
@@ -58,7 +61,22 @@ class FoundationPoseService : public rclcpp::Node
       
     }
 
-    std::tuple<std::shared_ptr<Base6DofDetectionModel>, std::shared_ptr<BaseMeshLoader>> CreateModel()
+    std::vector<std::string> mesh_file_path_valid(const std::string& dir) {
+      std::vector<std::string> paths;
+      for (const auto& entry : std::filesystem::recursive_directory_iterator(dir)) {
+        if (entry.is_regular_file()) {
+          std::string ext = entry.path().extension().string();
+          std::transform(ext.begin(), ext.end(), ext.begin(), ::tolower);
+          if (ext == ".obj" || ext == ".stl" || ext == ".ply") {
+            paths.push_back(entry.path().string());
+          }
+        }
+      }
+      return paths;
+    }
+
+    std::tuple<std::shared_ptr<Base6DofDetectionModel>, std::shared_ptr<BaseMeshLoader>> CreateModel(
+      const std::string& demo_textured_obj_path, const Eigen::Matrix3f intrinsic_in_mat)
     {
       auto refiner_core = CreateTrtInferCore(this->refiner_engine_path_,
                                             {
@@ -72,11 +90,8 @@ class FoundationPoseService : public rclcpp::Node
                                                 {"render_input", {252, 160, 160, 6}},
                                             },
                                             {{"scores", {252, 1}}}, 1);
-
-      Eigen::Matrix3f intrinsic_in_mat;
     
-
-      auto mesh_loader = CreateAssimpMeshLoader(demo_name_, this->demo_textured_obj_path_);
+      auto mesh_loader = CreateAssimpMeshLoader(demo_name_, demo_textured_obj_path);
       CHECK(mesh_loader != nullptr);
 
       auto foundation_pose =
@@ -89,12 +104,31 @@ class FoundationPoseService : public rclcpp::Node
     void foundation_pose_main(
       const cv::Mat& rgb_img,
       const cv::Mat& depth_img,
-      const Eigen::Matrix3f& K,
       uint32_t stamp_sec,
-      uint32_t stamp_nanosec){
+      uint32_t stamp_nanosec)
+    {
+      
+      if (!is_initialized_)
+      {
+        auto request = std::make_shared<auto_sam_interfaces::srv::SegmentRGBD::Request>();
+        cv_bridge::CvImage color_msg(std_msgs::msg::Header(), "rgb8", rgb_img);
+        cv_bridge::CvImage depth_msg(std_msgs::msg::Header(), "32FC1", depth_img);
+    
+        request->rgb = *color_msg.toImageMsg();
+        request->depth = *depth_msg.toImageMsg();
+        request->obj_type_to_track = {"cup_tripple", "EM2E_left", "water_ybs"};
+    
+        auto future_result = client_->async_send_request(
+          request,
+          std::bind(&FoundationPoseService::response_callback, this, std::placeholders::_1));
 
-      // foundation_pose->Register(rgb_img.clone(), depth_img, mask, demo_name_, out_pose, refine_itr_);
-      LOG(WARNING) << "first Pose : " << out_pose;
+        is_initialized_ = true;
+      }
+
+      for (auto& [foundation_pose, mesh_loader] : this->model_to_track_) {
+        foundation_pose->Track(rgb_img.clone(), depth_img, out_pose, demo_name_, track_pose);
+        LOG(WARNING) << "Track Pose : " << track_pose;
+      }
 
       // cv::Mat regist_plot = rgb.clone();
       // cv::cvtColor(regist_plot, regist_plot, cv::COLOR_RGB2BGR);
@@ -109,8 +143,8 @@ class FoundationPoseService : public rclcpp::Node
       pose_msg.header.stamp.nanosec = stamp_nanosec;
       pose_msg.header.frame_id = "camera_color_optical_frame";  // 你也可以使用 msg->header.frame_id
 
-      Eigen::Quaternionf q(out_pose.block<3, 3>(0, 0));
-      Eigen::Vector3f t = out_pose.block<3, 1>(0, 3);
+      Eigen::Quaternionf q(track_pose.block<3, 3>(0, 0));
+      Eigen::Vector3f t = track_pose.block<3, 1>(0, 3);
       pose_msg.pose.position.x = t(0);
       pose_msg.pose.position.y = t(1);
       pose_msg.pose.position.z = t(2);
@@ -133,27 +167,28 @@ class FoundationPoseService : public rclcpp::Node
 
 
   private:
+    rclcpp::Client<auto_sam_interfaces::srv::SegmentRGBD>::SharedPtr client_;
+
     rclcpp::Subscription<dros_common_interfaces::msg::RGBD>::SharedPtr sub_rgbd_;
     rclcpp::Publisher<geometry_msgs::msg::PoseStamped>::SharedPtr pub_pose_;
     rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr pub_debug_image_;
 
+    std::vector<std::string> obj_type_to_grasp = {"cup_tripple", "EM2E_left", "water_ybs"};
+    int type_num_track = 1;
+    std::string template_dir = "../../auto_sam_service/template/grasp_bottle";
+    std::vector<std::string> mesh_files;
+
     // FoundationPose相关
-    std::shared_ptr<Base6DofDetectionModel> foundation_pose_;
-    std::shared_ptr<BaseMeshLoader> mesh_loader_;
-    Eigen::Matrix3f intrinsic_in_mat_;
-    Eigen::Vector3f object_dimension_;
     Eigen::Matrix4f last_pose_;
     bool is_initialized_ = false;
+    std::vector<std::pair<std::shared_ptr<Base6DofDetectionModel>, std::shared_ptr<BaseMeshLoader>>> model_to_track_;
 
     // 参数
     std::string refiner_engine_path_;
     std::string scorer_engine_path_;
-    std::string demo_textured_obj_path_;
-    std::string camera_intrinsics_path_;
     int refine_itr_;
 
-    std::shared_ptr<Base6DofDetectionModel> foundation_pose;
-    std::shared_ptr<BaseMeshLoader> mesh_loader;
+    Eigen::Matrix3f rgb_K;
     Eigen::Vector3f object_dimension;
 
     Eigen::Matrix4f out_pose;
@@ -168,8 +203,7 @@ class FoundationPoseService : public rclcpp::Node
       RCLCPP_INFO(this->get_logger(), "get stamp:%d", header.stamp.sec);
       
       const sensor_msgs::msg::CameraInfo& rgb_info = msg->rgb_camera_info;
-      Eigen::Matrix3f rgb_K;
-      rgb_K << rgb_info.k[0], rgb_info.k[1], rgb_info.k[2],
+      this->rgb_K << rgb_info.k[0], rgb_info.k[1], rgb_info.k[2],
                rgb_info.k[3], rgb_info.k[4], rgb_info.k[5],
                rgb_info.k[6], rgb_info.k[7], rgb_info.k[8];
       RCLCPP_INFO(this->get_logger(), "RGB Camera fx: %f, fy: %f, cx: %f, cy: %f",
@@ -196,7 +230,35 @@ class FoundationPoseService : public rclcpp::Node
       RCLCPP_INFO(this->get_logger(), "RGB 图尺寸: %dx%d", rgb_img.cols, rgb_img.rows);
       RCLCPP_INFO(this->get_logger(), "Depth 图尺寸: %dx%d", depth_img.cols, depth_img.rows);
 
-      this->foundation_pose_main(rgb_img, depth_img, rgb_K, header.stamp.sec, header.stamp.nanosec);
+      this->foundation_pose_main(rgb_img, depth_img, header.stamp.sec, header.stamp.nanosec);
+    }
+
+    void response_callback(rclcpp::Client<auto_sam_interfaces::srv::SegmentRGBD>::SharedFuture future)
+    {
+      auto response = future.get();
+      RCLCPP_INFO(this->get_logger(), "Received %zu segmentation results.", response->results.size());
+  
+      for (size_t i = 0; i < response->results.size(); ++i) {
+        const auto& result = response->results[i];
+        cv::Mat mask = cv_bridge::toCvCopy(result.mask, "mono8")->image;
+        cv::Mat color, depth;
+        color = cv_bridge::toCvCopy(response->rgb_out, "rgb8")->image;
+        depth = cv_bridge::toCvCopy(response->depth_out, "32FC1")->image;
+  
+        // std::string filename = "mask_" + std::to_string(i) + "_" + result.mask_type + ".png";
+        // cv::imwrite(filename, mask);
+  
+        RCLCPP_INFO(this->get_logger(),
+          "[%zu] Label: %s | Mask Type: %s | Score: %.2f",
+          i, result.label.c_str(), result.mask_type.c_str(), result.score);
+        
+        if (result.mask_type == this->obj_type_to_grasp[this->type_num_track]){
+          auto [foundation_pose, mesh_loader] = this->CreateModel(mesh_files[this->type_num_track], this->rgb_K);
+          foundation_pose->Register(color.clone(), depth, mask, demo_name_, out_pose, refine_itr_);
+          LOG(WARNING) << "first Pose : " << out_pose;
+          this->model_to_track_.emplace_back(foundation_pose, mesh_loader);
+        }
+      }
     }
 
 };

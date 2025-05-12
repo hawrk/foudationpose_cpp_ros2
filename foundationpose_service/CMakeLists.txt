@@ -18,6 +18,7 @@ find_package(geometry_msgs REQUIRED)
 find_package(Eigen3 REQUIRED)
 find_package(OpenCV REQUIRED)  # 添加 OpenCV
 find_package(dros_common_interfaces REQUIRED)
+find_package(auto_sam_interfaces REQUIRED)
 find_package(glog REQUIRED)
 
 include_directories(
@@ -49,6 +50,7 @@ ament_target_dependencies(
   OpenCV
   Eigen3
   dros_common_interfaces
+  auto_sam_interfaces
 )
 
 target_link_libraries(main
