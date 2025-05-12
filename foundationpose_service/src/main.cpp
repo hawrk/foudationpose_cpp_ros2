@@ -40,8 +40,8 @@ class FoundationPoseService : public rclcpp::Node
         "camera/rgbd", 10, std::bind(&FoundationPoseService::rgbd_callback, this, std::placeholders::_1));
 
       // 初始化参数
-      this->declare_parameter<std::string>("refiner_engine_path", "../models/refiner_hwc_dynamic_fp16.engine");
-      this->declare_parameter<std::string>("scorer_engine_path", "../models/scorer_hwc_dynamic_fp16.engine");
+      this->declare_parameter<std::string>("refiner_engine_path", "./models/refiner_hwc_dynamic_fp16.engine");
+      this->declare_parameter<std::string>("scorer_engine_path", "./models/scorer_hwc_dynamic_fp16.engine");
       this->declare_parameter<int>("refine_iterations", 1);
 
       refiner_engine_path_ = this->get_parameter("refiner_engine_path").as_string();
@@ -175,7 +175,7 @@ class FoundationPoseService : public rclcpp::Node
 
     std::vector<std::string> obj_type_to_grasp = {"cup_tripple", "EM2E_left", "water_ybs"};
     int type_num_track = 1;
-    std::string template_dir = "../../auto_sam_service/template/grasp_bottle";
+    std::string template_dir = "../auto_sam_service/template/grasp_bottle";
     std::vector<std::string> mesh_files;
 
     // FoundationPose相关
@@ -245,8 +245,8 @@ class FoundationPoseService : public rclcpp::Node
         color = cv_bridge::toCvCopy(response->rgb_out, "rgb8")->image;
         depth = cv_bridge::toCvCopy(response->depth_out, "32FC1")->image;
   
-        // std::string filename = "mask_" + std::to_string(i) + "_" + result.mask_type + ".png";
-        // cv::imwrite(filename, mask);
+        std::string filename = "./det_res/mask_" + std::to_string(i) + "_" + result.mask_type + ".png";
+        cv::imwrite(filename, mask);
   
         RCLCPP_INFO(this->get_logger(),
           "[%zu] Label: %s | Mask Type: %s | Score: %.2f",
