@@ -66,3 +66,14 @@ target_link_libraries(${PROJECT_NAME} PUBLIC
 
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR}/include)
+
+# 安装共享库到 lib 目录
+install(TARGETS ${PROJECT_NAME}
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
+  RUNTIME DESTINATION bin
+)
+
+# 可选：安装头文件到 include 目录，方便其它包使用
+install(DIRECTORY include/ DESTINATION include)
+

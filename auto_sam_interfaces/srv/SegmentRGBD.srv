@@ -1,0 +1,7 @@
+sensor_msgs/Image rgb
+sensor_msgs/Image depth
+string[] obj_type_to_track
+---
+auto_sam_interfaces/SegmentationResult[] results
+sensor_msgs/Image rgb_out
+sensor_msgs/Image depth_out
