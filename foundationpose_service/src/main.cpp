@@ -125,19 +125,20 @@ class FoundationPoseService : public rclcpp::Node
 
         is_initialized_ = true;
       }
+      this->frame_id++;
 
       for (auto& [foundation_pose, mesh_loader] : this->model_to_track_) {
         depth_img.convertTo(depth_img, CV_32FC1, 0.001);
         foundation_pose->Track(rgb_img.clone(), depth_img, out_pose, demo_name_, track_pose);
         LOG(WARNING) << "Track Pose : " << track_pose;
-      }
 
-      // cv::Mat regist_plot = rgb.clone();
-      // cv::cvtColor(regist_plot, regist_plot, cv::COLOR_RGB2BGR);
-      // auto draw_pose = ConvertPoseMesh2BBox(out_pose, mesh_loader);
-      // draw3DBoundingBox(intrinsic_in_mat, draw_pose, 480, 640, object_dimension, regist_plot);
-      // cv::imshow("test_foundationpose_result", regist_plot);
-      // cv::waitKey(20);
+        Eigen::Vector3f object_dimension = mesh_loader->GetObjectDimension();
+        cv::Mat regist_plot = rgb_img.clone();
+        cv::cvtColor(regist_plot, regist_plot, cv::COLOR_RGB2BGR);
+        auto draw_pose = ConvertPoseMesh2BBox(track_pose, mesh_loader);
+        draw3DBoundingBox(this->rgb_K, draw_pose, 720, 1280, object_dimension, regist_plot);
+        cv::imwrite(this->debug_dir + "test_foundationpose_plot" + std::to_string(this->frame_id) + ".png", regist_plot);
+      }
 
       // 发布 Pose
       geometry_msgs::msg::PoseStamped pose_msg;
@@ -157,14 +158,6 @@ class FoundationPoseService : public rclcpp::Node
 
       pub_pose_->publish(pose_msg);
 
-      // // 发布调试图像
-      // sensor_msgs::msg::Image::SharedPtr debug_img_msg =
-      //   cv_bridge::CvImage(std_msgs::msg::Header(), "bgr8", rgb_img).toImageMsg();
-      // debug_img_msg->header.stamp.sec = stamp_sec;
-      // debug_img_msg->header.stamp.nanosec = stamp_nanosec;
-      // debug_img_msg->header.frame_id = "camera_color_optical_frame";
-
-      // pub_debug_image_->publish(debug_img_msg);
     }
 
 
@@ -189,6 +182,9 @@ class FoundationPoseService : public rclcpp::Node
     std::string refiner_engine_path_;
     std::string scorer_engine_path_;
     int refine_itr_;
+
+    int frame_id = 0;
+    std::string debug_dir = "./det_res/pose/";
 
     Eigen::Matrix3f rgb_K;
     Eigen::Vector3f object_dimension;
@@ -246,9 +242,9 @@ class FoundationPoseService : public rclcpp::Node
         cv::Mat color, depth;
         color = cv_bridge::toCvCopy(response->rgb_out, "rgb8")->image;
         depth = cv_bridge::toCvCopy(response->depth_out, "32FC1")->image;
-        depth /= 1000.f;  // Convert to meters
+        depth.convertTo(depth, CV_32FC1, 0.001);  // Convert to meters
   
-        std::string filename = "./det_res/mask_" + std::to_string(i) + "_" + result.mask_type + ".png";
+        std::string filename = this->debug_dir + "mask_" + std::to_string(i) + "_" + result.mask_type + ".png";
         cv::imwrite(filename, mask);
   
         RCLCPP_INFO(this->get_logger(),
@@ -266,7 +262,7 @@ class FoundationPoseService : public rclcpp::Node
           cv::cvtColor(regist_plot, regist_plot, cv::COLOR_RGB2BGR);
           auto draw_pose = ConvertPoseMesh2BBox(out_pose, mesh_loader);
           draw3DBoundingBox(this->rgb_K, draw_pose, 720, 1280, object_dimension, regist_plot);
-          cv::imwrite("./det_res/test_foundationpose_plot.png", regist_plot);
+          cv::imwrite(this->debug_dir + "test_foundationpose_plot.png", regist_plot);
 
           this->model_to_track_.emplace_back(foundation_pose, mesh_loader);
         }
