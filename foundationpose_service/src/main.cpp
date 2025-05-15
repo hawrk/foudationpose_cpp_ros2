@@ -45,8 +45,8 @@ class FoundationPoseService : public rclcpp::Node
       grasp_service_ = this->create_service<Grasp>("grasp", std::bind(&FoundationPoseService::grasp_callback, 
           this, std::placeholders::_1, std::placeholders::_2));
 
-      sub_rgbd_ = this->create_subscription<dros_common_interfaces::msg::RGBD>(
-        "camera/rgbd", 10, std::bind(&FoundationPoseService::rgbd_callback, this, std::placeholders::_1));
+      // sub_rgbd_ = this->create_subscription<dros_common_interfaces::msg::RGBD>(
+      //   "camera/rgbd", 10, std::bind(&FoundationPoseService::rgbd_callback, this, std::placeholders::_1));
 
       // 初始化参数
       this->declare_parameter<std::string>("refiner_engine_path", "./models/refiner_hwc_dynamic_fp16.engine");
