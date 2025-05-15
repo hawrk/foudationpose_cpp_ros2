@@ -1,10 +1,13 @@
 {
   "package_name": "dros_common_interfaces",
   "non_idl_tuples": [
-    "/home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces:msg/realsense/IMUInfo.msg",
-    "/home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces:msg/realsense/Extrinsics.msg",
-    "/home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces:msg/realsense/Metadata.msg",
-    "/home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces:msg/realsense/RGBD.msg",
-    "/home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces:srv/realsense/DeviceInfo.srv"
+    "/home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces:msg/realsense/IMUInfo.msg",
+    "/home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces:msg/realsense/Extrinsics.msg",
+    "/home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces:msg/realsense/Metadata.msg",
+    "/home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces:msg/realsense/RGBD.msg",
+    "/home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces:srv/realsense/DeviceInfo.srv",
+    "/home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces:srv/Grasp.srv",
+    "/home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces:action/nav2/NavigateToPose.action",
+    "/home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces:action/DexterousHand.action"
   ]
 }

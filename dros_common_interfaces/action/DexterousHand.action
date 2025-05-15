@@ -1,0 +1,10 @@
+#goal
+int32 target_position
+string obj_name
+---
+#result
+bool success
+string msg
+---
+#feedback
+float32 progress

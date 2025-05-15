@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces
+CMAKE_SOURCE_DIR = /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces
+CMAKE_BINARY_DIR = /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces
 
 # Utility rule file for dros_common_interfaces__py.
 
@@ -74,13 +74,20 @@ dros_common_interfaces__py/CMakeFiles/dros_common_interfaces__py: rosidl_generat
 dros_common_interfaces__py/CMakeFiles/dros_common_interfaces__py: rosidl_generator_py/dros_common_interfaces/msg/_metadata.py
 dros_common_interfaces__py/CMakeFiles/dros_common_interfaces__py: rosidl_generator_py/dros_common_interfaces/msg/_rgbd.py
 dros_common_interfaces__py/CMakeFiles/dros_common_interfaces__py: rosidl_generator_py/dros_common_interfaces/srv/_device_info.py
+dros_common_interfaces__py/CMakeFiles/dros_common_interfaces__py: rosidl_generator_py/dros_common_interfaces/srv/_grasp.py
+dros_common_interfaces__py/CMakeFiles/dros_common_interfaces__py: rosidl_generator_py/dros_common_interfaces/action/_navigate_to_pose.py
+dros_common_interfaces__py/CMakeFiles/dros_common_interfaces__py: rosidl_generator_py/dros_common_interfaces/action/_dexterous_hand.py
 dros_common_interfaces__py/CMakeFiles/dros_common_interfaces__py: rosidl_generator_py/dros_common_interfaces/msg/__init__.py
 dros_common_interfaces__py/CMakeFiles/dros_common_interfaces__py: rosidl_generator_py/dros_common_interfaces/srv/__init__.py
+dros_common_interfaces__py/CMakeFiles/dros_common_interfaces__py: rosidl_generator_py/dros_common_interfaces/action/__init__.py
 dros_common_interfaces__py/CMakeFiles/dros_common_interfaces__py: rosidl_generator_py/dros_common_interfaces/msg/_imu_info_s.c
 dros_common_interfaces__py/CMakeFiles/dros_common_interfaces__py: rosidl_generator_py/dros_common_interfaces/msg/_extrinsics_s.c
 dros_common_interfaces__py/CMakeFiles/dros_common_interfaces__py: rosidl_generator_py/dros_common_interfaces/msg/_metadata_s.c
 dros_common_interfaces__py/CMakeFiles/dros_common_interfaces__py: rosidl_generator_py/dros_common_interfaces/msg/_rgbd_s.c
 dros_common_interfaces__py/CMakeFiles/dros_common_interfaces__py: rosidl_generator_py/dros_common_interfaces/srv/_device_info_s.c
+dros_common_interfaces__py/CMakeFiles/dros_common_interfaces__py: rosidl_generator_py/dros_common_interfaces/srv/_grasp_s.c
+dros_common_interfaces__py/CMakeFiles/dros_common_interfaces__py: rosidl_generator_py/dros_common_interfaces/action/_navigate_to_pose_s.c
+dros_common_interfaces__py/CMakeFiles/dros_common_interfaces__py: rosidl_generator_py/dros_common_interfaces/action/_dexterous_hand_s.c
 
 rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/lib/rosidl_generator_py/rosidl_generator_py
 rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_generator_py/__init__.py
@@ -100,6 +107,9 @@ rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_t
 rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: rosidl_adapter/dros_common_interfaces/msg/Metadata.idl
 rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: rosidl_adapter/dros_common_interfaces/msg/RGBD.idl
 rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: rosidl_adapter/dros_common_interfaces/srv/DeviceInfo.idl
+rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: rosidl_adapter/dros_common_interfaces/srv/Grasp.idl
+rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: rosidl_adapter/dros_common_interfaces/action/NavigateToPose.idl
+rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: rosidl_adapter/dros_common_interfaces/action/DexterousHand.idl
 rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/builtin_interfaces/msg/Duration.idl
 rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/builtin_interfaces/msg/Time.idl
 rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/std_msgs/msg/Bool.idl
@@ -190,8 +200,43 @@ rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_t
 rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/geometry_msgs/msg/VelocityStamped.idl
 rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/geometry_msgs/msg/Wrench.idl
 rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/geometry_msgs/msg/WrenchStamped.idl
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Python code for ROS interfaces"
-	cd /home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces/dros_common_interfaces__py && /usr/bin/python3 /opt/ros/humble/share/rosidl_generator_py/cmake/../../../lib/rosidl_generator_py/rosidl_generator_py --generator-arguments-file /home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces/rosidl_generator_py__arguments.json --typesupport-impls "rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c;rosidl_typesupport_c"
+rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/action_msgs/msg/GoalInfo.idl
+rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/action_msgs/msg/GoalStatus.idl
+rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/action_msgs/msg/GoalStatusArray.idl
+rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/action_msgs/srv/CancelGoal.idl
+rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/unique_identifier_msgs/msg/UUID.idl
+rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/nav_msgs/msg/Goals.idl
+rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/nav_msgs/msg/GridCells.idl
+rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/nav_msgs/msg/MapMetaData.idl
+rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/nav_msgs/msg/OccupancyGrid.idl
+rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/nav_msgs/msg/Odometry.idl
+rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/nav_msgs/msg/Path.idl
+rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/nav_msgs/srv/GetMap.idl
+rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/nav_msgs/srv/GetPlan.idl
+rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/nav_msgs/srv/LoadMap.idl
+rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/nav_msgs/srv/SetMap.idl
+rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/geographic_msgs/msg/BoundingBox.idl
+rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/geographic_msgs/msg/GeographicMapChanges.idl
+rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/geographic_msgs/msg/GeographicMap.idl
+rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/geographic_msgs/msg/GeoPath.idl
+rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/geographic_msgs/msg/GeoPoint.idl
+rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/geographic_msgs/msg/GeoPointStamped.idl
+rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/geographic_msgs/msg/GeoPose.idl
+rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/geographic_msgs/msg/GeoPoseStamped.idl
+rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/geographic_msgs/msg/GeoPoseWithCovariance.idl
+rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/geographic_msgs/msg/GeoPoseWithCovarianceStamped.idl
+rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/geographic_msgs/msg/KeyValue.idl
+rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/geographic_msgs/msg/MapFeature.idl
+rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/geographic_msgs/msg/RouteNetwork.idl
+rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/geographic_msgs/msg/RoutePath.idl
+rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/geographic_msgs/msg/RouteSegment.idl
+rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/geographic_msgs/msg/WayPoint.idl
+rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/geographic_msgs/srv/GetGeographicMap.idl
+rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/geographic_msgs/srv/GetGeoPath.idl
+rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/geographic_msgs/srv/GetRoutePlan.idl
+rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/geographic_msgs/srv/UpdateGeographicMap.idl
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Python code for ROS interfaces"
+	cd /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces/dros_common_interfaces__py && /usr/bin/python3 /opt/ros/humble/share/rosidl_generator_py/cmake/../../../lib/rosidl_generator_py/rosidl_generator_py --generator-arguments-file /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces/rosidl_generator_py__arguments.json --typesupport-impls "rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c;rosidl_typesupport_c"
 
 rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_introspection_c.c: rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_introspection_c.c
@@ -214,11 +259,23 @@ rosidl_generator_py/dros_common_interfaces/msg/_rgbd.py: rosidl_generator_py/dro
 rosidl_generator_py/dros_common_interfaces/srv/_device_info.py: rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/dros_common_interfaces/srv/_device_info.py
 
+rosidl_generator_py/dros_common_interfaces/srv/_grasp.py: rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/dros_common_interfaces/srv/_grasp.py
+
+rosidl_generator_py/dros_common_interfaces/action/_navigate_to_pose.py: rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/dros_common_interfaces/action/_navigate_to_pose.py
+
+rosidl_generator_py/dros_common_interfaces/action/_dexterous_hand.py: rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/dros_common_interfaces/action/_dexterous_hand.py
+
 rosidl_generator_py/dros_common_interfaces/msg/__init__.py: rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/dros_common_interfaces/msg/__init__.py
 
 rosidl_generator_py/dros_common_interfaces/srv/__init__.py: rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/dros_common_interfaces/srv/__init__.py
+
+rosidl_generator_py/dros_common_interfaces/action/__init__.py: rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/dros_common_interfaces/action/__init__.py
 
 rosidl_generator_py/dros_common_interfaces/msg/_imu_info_s.c: rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/dros_common_interfaces/msg/_imu_info_s.c
@@ -235,10 +292,24 @@ rosidl_generator_py/dros_common_interfaces/msg/_rgbd_s.c: rosidl_generator_py/dr
 rosidl_generator_py/dros_common_interfaces/srv/_device_info_s.c: rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/dros_common_interfaces/srv/_device_info_s.c
 
+rosidl_generator_py/dros_common_interfaces/srv/_grasp_s.c: rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/dros_common_interfaces/srv/_grasp_s.c
+
+rosidl_generator_py/dros_common_interfaces/action/_navigate_to_pose_s.c: rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/dros_common_interfaces/action/_navigate_to_pose_s.c
+
+rosidl_generator_py/dros_common_interfaces/action/_dexterous_hand_s.c: rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/dros_common_interfaces/action/_dexterous_hand_s.c
+
 dros_common_interfaces__py: dros_common_interfaces__py/CMakeFiles/dros_common_interfaces__py
 dros_common_interfaces__py: rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_c.c
 dros_common_interfaces__py: rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c
 dros_common_interfaces__py: rosidl_generator_py/dros_common_interfaces/_dros_common_interfaces_s.ep.rosidl_typesupport_introspection_c.c
+dros_common_interfaces__py: rosidl_generator_py/dros_common_interfaces/action/__init__.py
+dros_common_interfaces__py: rosidl_generator_py/dros_common_interfaces/action/_dexterous_hand.py
+dros_common_interfaces__py: rosidl_generator_py/dros_common_interfaces/action/_dexterous_hand_s.c
+dros_common_interfaces__py: rosidl_generator_py/dros_common_interfaces/action/_navigate_to_pose.py
+dros_common_interfaces__py: rosidl_generator_py/dros_common_interfaces/action/_navigate_to_pose_s.c
 dros_common_interfaces__py: rosidl_generator_py/dros_common_interfaces/msg/__init__.py
 dros_common_interfaces__py: rosidl_generator_py/dros_common_interfaces/msg/_extrinsics.py
 dros_common_interfaces__py: rosidl_generator_py/dros_common_interfaces/msg/_extrinsics_s.c
@@ -251,6 +322,8 @@ dros_common_interfaces__py: rosidl_generator_py/dros_common_interfaces/msg/_rgbd
 dros_common_interfaces__py: rosidl_generator_py/dros_common_interfaces/srv/__init__.py
 dros_common_interfaces__py: rosidl_generator_py/dros_common_interfaces/srv/_device_info.py
 dros_common_interfaces__py: rosidl_generator_py/dros_common_interfaces/srv/_device_info_s.c
+dros_common_interfaces__py: rosidl_generator_py/dros_common_interfaces/srv/_grasp.py
+dros_common_interfaces__py: rosidl_generator_py/dros_common_interfaces/srv/_grasp_s.c
 dros_common_interfaces__py: dros_common_interfaces__py/CMakeFiles/dros_common_interfaces__py.dir/build.make
 .PHONY : dros_common_interfaces__py
 
@@ -259,10 +332,10 @@ dros_common_interfaces__py/CMakeFiles/dros_common_interfaces__py.dir/build: dros
 .PHONY : dros_common_interfaces__py/CMakeFiles/dros_common_interfaces__py.dir/build
 
 dros_common_interfaces__py/CMakeFiles/dros_common_interfaces__py.dir/clean:
-	cd /home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces/dros_common_interfaces__py && $(CMAKE_COMMAND) -P CMakeFiles/dros_common_interfaces__py.dir/cmake_clean.cmake
+	cd /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces/dros_common_interfaces__py && $(CMAKE_COMMAND) -P CMakeFiles/dros_common_interfaces__py.dir/cmake_clean.cmake
 .PHONY : dros_common_interfaces__py/CMakeFiles/dros_common_interfaces__py.dir/clean
 
 dros_common_interfaces__py/CMakeFiles/dros_common_interfaces__py.dir/depend:
-	cd /home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces /home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces/dros_common_interfaces__py /home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces /home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces/dros_common_interfaces__py /home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces/dros_common_interfaces__py/CMakeFiles/dros_common_interfaces__py.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces/dros_common_interfaces__py /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces/dros_common_interfaces__py /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces/dros_common_interfaces__py/CMakeFiles/dros_common_interfaces__py.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : dros_common_interfaces__py/CMakeFiles/dros_common_interfaces__py.dir/depend
 

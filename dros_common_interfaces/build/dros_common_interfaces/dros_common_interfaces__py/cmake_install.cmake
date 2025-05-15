@@ -1,8 +1,8 @@
-# Install script for directory: /home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces/dros_common_interfaces__py
+# Install script for directory: /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces/dros_common_interfaces__py
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/install/dros_common_interfaces")
+  set(CMAKE_INSTALL_PREFIX "/home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/install/dros_common_interfaces")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 

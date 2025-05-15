@@ -1,5 +1,15 @@
 file(REMOVE_RECURSE
   "CMakeFiles/dros_common_interfaces__cpp"
+  "rosidl_generator_cpp/dros_common_interfaces/action/detail/dexterous_hand__builder.hpp"
+  "rosidl_generator_cpp/dros_common_interfaces/action/detail/dexterous_hand__struct.hpp"
+  "rosidl_generator_cpp/dros_common_interfaces/action/detail/dexterous_hand__traits.hpp"
+  "rosidl_generator_cpp/dros_common_interfaces/action/detail/dexterous_hand__type_support.hpp"
+  "rosidl_generator_cpp/dros_common_interfaces/action/detail/navigate_to_pose__builder.hpp"
+  "rosidl_generator_cpp/dros_common_interfaces/action/detail/navigate_to_pose__struct.hpp"
+  "rosidl_generator_cpp/dros_common_interfaces/action/detail/navigate_to_pose__traits.hpp"
+  "rosidl_generator_cpp/dros_common_interfaces/action/detail/navigate_to_pose__type_support.hpp"
+  "rosidl_generator_cpp/dros_common_interfaces/action/dexterous_hand.hpp"
+  "rosidl_generator_cpp/dros_common_interfaces/action/navigate_to_pose.hpp"
   "rosidl_generator_cpp/dros_common_interfaces/msg/detail/extrinsics__builder.hpp"
   "rosidl_generator_cpp/dros_common_interfaces/msg/detail/extrinsics__struct.hpp"
   "rosidl_generator_cpp/dros_common_interfaces/msg/detail/extrinsics__traits.hpp"
@@ -24,7 +34,12 @@ file(REMOVE_RECURSE
   "rosidl_generator_cpp/dros_common_interfaces/srv/detail/device_info__struct.hpp"
   "rosidl_generator_cpp/dros_common_interfaces/srv/detail/device_info__traits.hpp"
   "rosidl_generator_cpp/dros_common_interfaces/srv/detail/device_info__type_support.hpp"
+  "rosidl_generator_cpp/dros_common_interfaces/srv/detail/grasp__builder.hpp"
+  "rosidl_generator_cpp/dros_common_interfaces/srv/detail/grasp__struct.hpp"
+  "rosidl_generator_cpp/dros_common_interfaces/srv/detail/grasp__traits.hpp"
+  "rosidl_generator_cpp/dros_common_interfaces/srv/detail/grasp__type_support.hpp"
   "rosidl_generator_cpp/dros_common_interfaces/srv/device_info.hpp"
+  "rosidl_generator_cpp/dros_common_interfaces/srv/grasp.hpp"
 )
 
 # Per-language clean rules from dependency scanning.

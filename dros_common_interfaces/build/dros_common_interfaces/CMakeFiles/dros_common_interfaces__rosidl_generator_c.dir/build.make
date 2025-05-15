@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces
+CMAKE_SOURCE_DIR = /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces
+CMAKE_BINARY_DIR = /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces
 
 # Include any dependencies generated for this target.
 include CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/depend.make
@@ -87,6 +87,9 @@ rosidl_generator_c/dros_common_interfaces/msg/imu_info.h: rosidl_adapter/dros_co
 rosidl_generator_c/dros_common_interfaces/msg/imu_info.h: rosidl_adapter/dros_common_interfaces/msg/Metadata.idl
 rosidl_generator_c/dros_common_interfaces/msg/imu_info.h: rosidl_adapter/dros_common_interfaces/msg/RGBD.idl
 rosidl_generator_c/dros_common_interfaces/msg/imu_info.h: rosidl_adapter/dros_common_interfaces/srv/DeviceInfo.idl
+rosidl_generator_c/dros_common_interfaces/msg/imu_info.h: rosidl_adapter/dros_common_interfaces/srv/Grasp.idl
+rosidl_generator_c/dros_common_interfaces/msg/imu_info.h: rosidl_adapter/dros_common_interfaces/action/NavigateToPose.idl
+rosidl_generator_c/dros_common_interfaces/msg/imu_info.h: rosidl_adapter/dros_common_interfaces/action/DexterousHand.idl
 rosidl_generator_c/dros_common_interfaces/msg/imu_info.h: /opt/ros/humble/share/builtin_interfaces/msg/Duration.idl
 rosidl_generator_c/dros_common_interfaces/msg/imu_info.h: /opt/ros/humble/share/builtin_interfaces/msg/Time.idl
 rosidl_generator_c/dros_common_interfaces/msg/imu_info.h: /opt/ros/humble/share/std_msgs/msg/Bool.idl
@@ -177,8 +180,43 @@ rosidl_generator_c/dros_common_interfaces/msg/imu_info.h: /opt/ros/humble/share/
 rosidl_generator_c/dros_common_interfaces/msg/imu_info.h: /opt/ros/humble/share/geometry_msgs/msg/VelocityStamped.idl
 rosidl_generator_c/dros_common_interfaces/msg/imu_info.h: /opt/ros/humble/share/geometry_msgs/msg/Wrench.idl
 rosidl_generator_c/dros_common_interfaces/msg/imu_info.h: /opt/ros/humble/share/geometry_msgs/msg/WrenchStamped.idl
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C code for ROS interfaces"
-	/usr/bin/python3 /opt/ros/humble/share/rosidl_generator_c/cmake/../../../lib/rosidl_generator_c/rosidl_generator_c --generator-arguments-file /home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces/rosidl_generator_c__arguments.json
+rosidl_generator_c/dros_common_interfaces/msg/imu_info.h: /opt/ros/humble/share/action_msgs/msg/GoalInfo.idl
+rosidl_generator_c/dros_common_interfaces/msg/imu_info.h: /opt/ros/humble/share/action_msgs/msg/GoalStatus.idl
+rosidl_generator_c/dros_common_interfaces/msg/imu_info.h: /opt/ros/humble/share/action_msgs/msg/GoalStatusArray.idl
+rosidl_generator_c/dros_common_interfaces/msg/imu_info.h: /opt/ros/humble/share/action_msgs/srv/CancelGoal.idl
+rosidl_generator_c/dros_common_interfaces/msg/imu_info.h: /opt/ros/humble/share/unique_identifier_msgs/msg/UUID.idl
+rosidl_generator_c/dros_common_interfaces/msg/imu_info.h: /opt/ros/humble/share/nav_msgs/msg/Goals.idl
+rosidl_generator_c/dros_common_interfaces/msg/imu_info.h: /opt/ros/humble/share/nav_msgs/msg/GridCells.idl
+rosidl_generator_c/dros_common_interfaces/msg/imu_info.h: /opt/ros/humble/share/nav_msgs/msg/MapMetaData.idl
+rosidl_generator_c/dros_common_interfaces/msg/imu_info.h: /opt/ros/humble/share/nav_msgs/msg/OccupancyGrid.idl
+rosidl_generator_c/dros_common_interfaces/msg/imu_info.h: /opt/ros/humble/share/nav_msgs/msg/Odometry.idl
+rosidl_generator_c/dros_common_interfaces/msg/imu_info.h: /opt/ros/humble/share/nav_msgs/msg/Path.idl
+rosidl_generator_c/dros_common_interfaces/msg/imu_info.h: /opt/ros/humble/share/nav_msgs/srv/GetMap.idl
+rosidl_generator_c/dros_common_interfaces/msg/imu_info.h: /opt/ros/humble/share/nav_msgs/srv/GetPlan.idl
+rosidl_generator_c/dros_common_interfaces/msg/imu_info.h: /opt/ros/humble/share/nav_msgs/srv/LoadMap.idl
+rosidl_generator_c/dros_common_interfaces/msg/imu_info.h: /opt/ros/humble/share/nav_msgs/srv/SetMap.idl
+rosidl_generator_c/dros_common_interfaces/msg/imu_info.h: /opt/ros/humble/share/geographic_msgs/msg/BoundingBox.idl
+rosidl_generator_c/dros_common_interfaces/msg/imu_info.h: /opt/ros/humble/share/geographic_msgs/msg/GeographicMapChanges.idl
+rosidl_generator_c/dros_common_interfaces/msg/imu_info.h: /opt/ros/humble/share/geographic_msgs/msg/GeographicMap.idl
+rosidl_generator_c/dros_common_interfaces/msg/imu_info.h: /opt/ros/humble/share/geographic_msgs/msg/GeoPath.idl
+rosidl_generator_c/dros_common_interfaces/msg/imu_info.h: /opt/ros/humble/share/geographic_msgs/msg/GeoPoint.idl
+rosidl_generator_c/dros_common_interfaces/msg/imu_info.h: /opt/ros/humble/share/geographic_msgs/msg/GeoPointStamped.idl
+rosidl_generator_c/dros_common_interfaces/msg/imu_info.h: /opt/ros/humble/share/geographic_msgs/msg/GeoPose.idl
+rosidl_generator_c/dros_common_interfaces/msg/imu_info.h: /opt/ros/humble/share/geographic_msgs/msg/GeoPoseStamped.idl
+rosidl_generator_c/dros_common_interfaces/msg/imu_info.h: /opt/ros/humble/share/geographic_msgs/msg/GeoPoseWithCovariance.idl
+rosidl_generator_c/dros_common_interfaces/msg/imu_info.h: /opt/ros/humble/share/geographic_msgs/msg/GeoPoseWithCovarianceStamped.idl
+rosidl_generator_c/dros_common_interfaces/msg/imu_info.h: /opt/ros/humble/share/geographic_msgs/msg/KeyValue.idl
+rosidl_generator_c/dros_common_interfaces/msg/imu_info.h: /opt/ros/humble/share/geographic_msgs/msg/MapFeature.idl
+rosidl_generator_c/dros_common_interfaces/msg/imu_info.h: /opt/ros/humble/share/geographic_msgs/msg/RouteNetwork.idl
+rosidl_generator_c/dros_common_interfaces/msg/imu_info.h: /opt/ros/humble/share/geographic_msgs/msg/RoutePath.idl
+rosidl_generator_c/dros_common_interfaces/msg/imu_info.h: /opt/ros/humble/share/geographic_msgs/msg/RouteSegment.idl
+rosidl_generator_c/dros_common_interfaces/msg/imu_info.h: /opt/ros/humble/share/geographic_msgs/msg/WayPoint.idl
+rosidl_generator_c/dros_common_interfaces/msg/imu_info.h: /opt/ros/humble/share/geographic_msgs/srv/GetGeographicMap.idl
+rosidl_generator_c/dros_common_interfaces/msg/imu_info.h: /opt/ros/humble/share/geographic_msgs/srv/GetGeoPath.idl
+rosidl_generator_c/dros_common_interfaces/msg/imu_info.h: /opt/ros/humble/share/geographic_msgs/srv/GetRoutePlan.idl
+rosidl_generator_c/dros_common_interfaces/msg/imu_info.h: /opt/ros/humble/share/geographic_msgs/srv/UpdateGeographicMap.idl
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C code for ROS interfaces"
+	/usr/bin/python3 /opt/ros/humble/share/rosidl_generator_c/cmake/../../../lib/rosidl_generator_c/rosidl_generator_c --generator-arguments-file /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces/rosidl_generator_c__arguments.json
 
 rosidl_generator_c/dros_common_interfaces/msg/detail/imu_info__functions.h: rosidl_generator_c/dros_common_interfaces/msg/imu_info.h
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/dros_common_interfaces/msg/detail/imu_info__functions.h
@@ -237,6 +275,42 @@ rosidl_generator_c/dros_common_interfaces/srv/detail/device_info__struct.h: rosi
 rosidl_generator_c/dros_common_interfaces/srv/detail/device_info__type_support.h: rosidl_generator_c/dros_common_interfaces/msg/imu_info.h
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/dros_common_interfaces/srv/detail/device_info__type_support.h
 
+rosidl_generator_c/dros_common_interfaces/srv/grasp.h: rosidl_generator_c/dros_common_interfaces/msg/imu_info.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/dros_common_interfaces/srv/grasp.h
+
+rosidl_generator_c/dros_common_interfaces/srv/detail/grasp__functions.h: rosidl_generator_c/dros_common_interfaces/msg/imu_info.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/dros_common_interfaces/srv/detail/grasp__functions.h
+
+rosidl_generator_c/dros_common_interfaces/srv/detail/grasp__struct.h: rosidl_generator_c/dros_common_interfaces/msg/imu_info.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/dros_common_interfaces/srv/detail/grasp__struct.h
+
+rosidl_generator_c/dros_common_interfaces/srv/detail/grasp__type_support.h: rosidl_generator_c/dros_common_interfaces/msg/imu_info.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/dros_common_interfaces/srv/detail/grasp__type_support.h
+
+rosidl_generator_c/dros_common_interfaces/action/navigate_to_pose.h: rosidl_generator_c/dros_common_interfaces/msg/imu_info.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/dros_common_interfaces/action/navigate_to_pose.h
+
+rosidl_generator_c/dros_common_interfaces/action/detail/navigate_to_pose__functions.h: rosidl_generator_c/dros_common_interfaces/msg/imu_info.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/dros_common_interfaces/action/detail/navigate_to_pose__functions.h
+
+rosidl_generator_c/dros_common_interfaces/action/detail/navigate_to_pose__struct.h: rosidl_generator_c/dros_common_interfaces/msg/imu_info.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/dros_common_interfaces/action/detail/navigate_to_pose__struct.h
+
+rosidl_generator_c/dros_common_interfaces/action/detail/navigate_to_pose__type_support.h: rosidl_generator_c/dros_common_interfaces/msg/imu_info.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/dros_common_interfaces/action/detail/navigate_to_pose__type_support.h
+
+rosidl_generator_c/dros_common_interfaces/action/dexterous_hand.h: rosidl_generator_c/dros_common_interfaces/msg/imu_info.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/dros_common_interfaces/action/dexterous_hand.h
+
+rosidl_generator_c/dros_common_interfaces/action/detail/dexterous_hand__functions.h: rosidl_generator_c/dros_common_interfaces/msg/imu_info.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/dros_common_interfaces/action/detail/dexterous_hand__functions.h
+
+rosidl_generator_c/dros_common_interfaces/action/detail/dexterous_hand__struct.h: rosidl_generator_c/dros_common_interfaces/msg/imu_info.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/dros_common_interfaces/action/detail/dexterous_hand__struct.h
+
+rosidl_generator_c/dros_common_interfaces/action/detail/dexterous_hand__type_support.h: rosidl_generator_c/dros_common_interfaces/msg/imu_info.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/dros_common_interfaces/action/detail/dexterous_hand__type_support.h
+
 rosidl_generator_c/dros_common_interfaces/msg/detail/imu_info__functions.c: rosidl_generator_c/dros_common_interfaces/msg/imu_info.h
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/dros_common_interfaces/msg/detail/imu_info__functions.c
 
@@ -252,75 +326,126 @@ rosidl_generator_c/dros_common_interfaces/msg/detail/rgbd__functions.c: rosidl_g
 rosidl_generator_c/dros_common_interfaces/srv/detail/device_info__functions.c: rosidl_generator_c/dros_common_interfaces/msg/imu_info.h
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/dros_common_interfaces/srv/detail/device_info__functions.c
 
+rosidl_generator_c/dros_common_interfaces/srv/detail/grasp__functions.c: rosidl_generator_c/dros_common_interfaces/msg/imu_info.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/dros_common_interfaces/srv/detail/grasp__functions.c
+
+rosidl_generator_c/dros_common_interfaces/action/detail/navigate_to_pose__functions.c: rosidl_generator_c/dros_common_interfaces/msg/imu_info.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/dros_common_interfaces/action/detail/navigate_to_pose__functions.c
+
+rosidl_generator_c/dros_common_interfaces/action/detail/dexterous_hand__functions.c: rosidl_generator_c/dros_common_interfaces/msg/imu_info.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/dros_common_interfaces/action/detail/dexterous_hand__functions.c
+
 CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/imu_info__functions.c.o: CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/flags.make
 CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/imu_info__functions.c.o: rosidl_generator_c/dros_common_interfaces/msg/detail/imu_info__functions.c
 CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/imu_info__functions.c.o: CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/imu_info__functions.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/imu_info__functions.c.o -MF CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/imu_info__functions.c.o.d -o CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/imu_info__functions.c.o -c /home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces/rosidl_generator_c/dros_common_interfaces/msg/detail/imu_info__functions.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/imu_info__functions.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/imu_info__functions.c.o -MF CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/imu_info__functions.c.o.d -o CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/imu_info__functions.c.o -c /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces/rosidl_generator_c/dros_common_interfaces/msg/detail/imu_info__functions.c
 
 CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/imu_info__functions.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/imu_info__functions.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces/rosidl_generator_c/dros_common_interfaces/msg/detail/imu_info__functions.c > CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/imu_info__functions.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces/rosidl_generator_c/dros_common_interfaces/msg/detail/imu_info__functions.c > CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/imu_info__functions.c.i
 
 CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/imu_info__functions.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/imu_info__functions.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces/rosidl_generator_c/dros_common_interfaces/msg/detail/imu_info__functions.c -o CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/imu_info__functions.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces/rosidl_generator_c/dros_common_interfaces/msg/detail/imu_info__functions.c -o CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/imu_info__functions.c.s
 
 CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/extrinsics__functions.c.o: CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/flags.make
 CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/extrinsics__functions.c.o: rosidl_generator_c/dros_common_interfaces/msg/detail/extrinsics__functions.c
 CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/extrinsics__functions.c.o: CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/extrinsics__functions.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/extrinsics__functions.c.o -MF CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/extrinsics__functions.c.o.d -o CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/extrinsics__functions.c.o -c /home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces/rosidl_generator_c/dros_common_interfaces/msg/detail/extrinsics__functions.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/extrinsics__functions.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/extrinsics__functions.c.o -MF CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/extrinsics__functions.c.o.d -o CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/extrinsics__functions.c.o -c /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces/rosidl_generator_c/dros_common_interfaces/msg/detail/extrinsics__functions.c
 
 CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/extrinsics__functions.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/extrinsics__functions.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces/rosidl_generator_c/dros_common_interfaces/msg/detail/extrinsics__functions.c > CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/extrinsics__functions.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces/rosidl_generator_c/dros_common_interfaces/msg/detail/extrinsics__functions.c > CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/extrinsics__functions.c.i
 
 CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/extrinsics__functions.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/extrinsics__functions.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces/rosidl_generator_c/dros_common_interfaces/msg/detail/extrinsics__functions.c -o CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/extrinsics__functions.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces/rosidl_generator_c/dros_common_interfaces/msg/detail/extrinsics__functions.c -o CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/extrinsics__functions.c.s
 
 CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/metadata__functions.c.o: CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/flags.make
 CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/metadata__functions.c.o: rosidl_generator_c/dros_common_interfaces/msg/detail/metadata__functions.c
 CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/metadata__functions.c.o: CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/metadata__functions.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/metadata__functions.c.o -MF CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/metadata__functions.c.o.d -o CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/metadata__functions.c.o -c /home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces/rosidl_generator_c/dros_common_interfaces/msg/detail/metadata__functions.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/metadata__functions.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/metadata__functions.c.o -MF CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/metadata__functions.c.o.d -o CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/metadata__functions.c.o -c /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces/rosidl_generator_c/dros_common_interfaces/msg/detail/metadata__functions.c
 
 CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/metadata__functions.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/metadata__functions.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces/rosidl_generator_c/dros_common_interfaces/msg/detail/metadata__functions.c > CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/metadata__functions.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces/rosidl_generator_c/dros_common_interfaces/msg/detail/metadata__functions.c > CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/metadata__functions.c.i
 
 CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/metadata__functions.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/metadata__functions.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces/rosidl_generator_c/dros_common_interfaces/msg/detail/metadata__functions.c -o CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/metadata__functions.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces/rosidl_generator_c/dros_common_interfaces/msg/detail/metadata__functions.c -o CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/metadata__functions.c.s
 
 CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/rgbd__functions.c.o: CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/flags.make
 CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/rgbd__functions.c.o: rosidl_generator_c/dros_common_interfaces/msg/detail/rgbd__functions.c
 CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/rgbd__functions.c.o: CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/rgbd__functions.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/rgbd__functions.c.o -MF CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/rgbd__functions.c.o.d -o CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/rgbd__functions.c.o -c /home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces/rosidl_generator_c/dros_common_interfaces/msg/detail/rgbd__functions.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/rgbd__functions.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/rgbd__functions.c.o -MF CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/rgbd__functions.c.o.d -o CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/rgbd__functions.c.o -c /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces/rosidl_generator_c/dros_common_interfaces/msg/detail/rgbd__functions.c
 
 CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/rgbd__functions.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/rgbd__functions.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces/rosidl_generator_c/dros_common_interfaces/msg/detail/rgbd__functions.c > CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/rgbd__functions.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces/rosidl_generator_c/dros_common_interfaces/msg/detail/rgbd__functions.c > CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/rgbd__functions.c.i
 
 CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/rgbd__functions.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/rgbd__functions.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces/rosidl_generator_c/dros_common_interfaces/msg/detail/rgbd__functions.c -o CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/rgbd__functions.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces/rosidl_generator_c/dros_common_interfaces/msg/detail/rgbd__functions.c -o CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/rgbd__functions.c.s
 
 CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/srv/detail/device_info__functions.c.o: CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/flags.make
 CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/srv/detail/device_info__functions.c.o: rosidl_generator_c/dros_common_interfaces/srv/detail/device_info__functions.c
 CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/srv/detail/device_info__functions.c.o: CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/srv/detail/device_info__functions.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/srv/detail/device_info__functions.c.o -MF CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/srv/detail/device_info__functions.c.o.d -o CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/srv/detail/device_info__functions.c.o -c /home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces/rosidl_generator_c/dros_common_interfaces/srv/detail/device_info__functions.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/srv/detail/device_info__functions.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/srv/detail/device_info__functions.c.o -MF CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/srv/detail/device_info__functions.c.o.d -o CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/srv/detail/device_info__functions.c.o -c /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces/rosidl_generator_c/dros_common_interfaces/srv/detail/device_info__functions.c
 
 CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/srv/detail/device_info__functions.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/srv/detail/device_info__functions.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces/rosidl_generator_c/dros_common_interfaces/srv/detail/device_info__functions.c > CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/srv/detail/device_info__functions.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces/rosidl_generator_c/dros_common_interfaces/srv/detail/device_info__functions.c > CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/srv/detail/device_info__functions.c.i
 
 CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/srv/detail/device_info__functions.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/srv/detail/device_info__functions.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces/rosidl_generator_c/dros_common_interfaces/srv/detail/device_info__functions.c -o CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/srv/detail/device_info__functions.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces/rosidl_generator_c/dros_common_interfaces/srv/detail/device_info__functions.c -o CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/srv/detail/device_info__functions.c.s
+
+CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/srv/detail/grasp__functions.c.o: CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/flags.make
+CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/srv/detail/grasp__functions.c.o: rosidl_generator_c/dros_common_interfaces/srv/detail/grasp__functions.c
+CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/srv/detail/grasp__functions.c.o: CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/srv/detail/grasp__functions.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/srv/detail/grasp__functions.c.o -MF CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/srv/detail/grasp__functions.c.o.d -o CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/srv/detail/grasp__functions.c.o -c /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces/rosidl_generator_c/dros_common_interfaces/srv/detail/grasp__functions.c
+
+CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/srv/detail/grasp__functions.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/srv/detail/grasp__functions.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces/rosidl_generator_c/dros_common_interfaces/srv/detail/grasp__functions.c > CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/srv/detail/grasp__functions.c.i
+
+CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/srv/detail/grasp__functions.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/srv/detail/grasp__functions.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces/rosidl_generator_c/dros_common_interfaces/srv/detail/grasp__functions.c -o CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/srv/detail/grasp__functions.c.s
+
+CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/action/detail/navigate_to_pose__functions.c.o: CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/flags.make
+CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/action/detail/navigate_to_pose__functions.c.o: rosidl_generator_c/dros_common_interfaces/action/detail/navigate_to_pose__functions.c
+CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/action/detail/navigate_to_pose__functions.c.o: CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/action/detail/navigate_to_pose__functions.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/action/detail/navigate_to_pose__functions.c.o -MF CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/action/detail/navigate_to_pose__functions.c.o.d -o CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/action/detail/navigate_to_pose__functions.c.o -c /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces/rosidl_generator_c/dros_common_interfaces/action/detail/navigate_to_pose__functions.c
+
+CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/action/detail/navigate_to_pose__functions.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/action/detail/navigate_to_pose__functions.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces/rosidl_generator_c/dros_common_interfaces/action/detail/navigate_to_pose__functions.c > CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/action/detail/navigate_to_pose__functions.c.i
+
+CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/action/detail/navigate_to_pose__functions.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/action/detail/navigate_to_pose__functions.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces/rosidl_generator_c/dros_common_interfaces/action/detail/navigate_to_pose__functions.c -o CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/action/detail/navigate_to_pose__functions.c.s
+
+CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/action/detail/dexterous_hand__functions.c.o: CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/flags.make
+CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/action/detail/dexterous_hand__functions.c.o: rosidl_generator_c/dros_common_interfaces/action/detail/dexterous_hand__functions.c
+CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/action/detail/dexterous_hand__functions.c.o: CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/action/detail/dexterous_hand__functions.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/action/detail/dexterous_hand__functions.c.o -MF CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/action/detail/dexterous_hand__functions.c.o.d -o CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/action/detail/dexterous_hand__functions.c.o -c /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces/rosidl_generator_c/dros_common_interfaces/action/detail/dexterous_hand__functions.c
+
+CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/action/detail/dexterous_hand__functions.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/action/detail/dexterous_hand__functions.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces/rosidl_generator_c/dros_common_interfaces/action/detail/dexterous_hand__functions.c > CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/action/detail/dexterous_hand__functions.c.i
+
+CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/action/detail/dexterous_hand__functions.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/action/detail/dexterous_hand__functions.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces/rosidl_generator_c/dros_common_interfaces/action/detail/dexterous_hand__functions.c -o CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/action/detail/dexterous_hand__functions.c.s
 
 # Object files for target dros_common_interfaces__rosidl_generator_c
 dros_common_interfaces__rosidl_generator_c_OBJECTS = \
@@ -328,7 +453,10 @@ dros_common_interfaces__rosidl_generator_c_OBJECTS = \
 "CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/extrinsics__functions.c.o" \
 "CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/metadata__functions.c.o" \
 "CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/rgbd__functions.c.o" \
-"CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/srv/detail/device_info__functions.c.o"
+"CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/srv/detail/device_info__functions.c.o" \
+"CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/srv/detail/grasp__functions.c.o" \
+"CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/action/detail/navigate_to_pose__functions.c.o" \
+"CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/action/detail/dexterous_hand__functions.c.o"
 
 # External object files for target dros_common_interfaces__rosidl_generator_c
 dros_common_interfaces__rosidl_generator_c_EXTERNAL_OBJECTS =
@@ -338,15 +466,22 @@ libdros_common_interfaces__rosidl_generator_c.so: CMakeFiles/dros_common_interfa
 libdros_common_interfaces__rosidl_generator_c.so: CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/metadata__functions.c.o
 libdros_common_interfaces__rosidl_generator_c.so: CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/msg/detail/rgbd__functions.c.o
 libdros_common_interfaces__rosidl_generator_c.so: CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/srv/detail/device_info__functions.c.o
+libdros_common_interfaces__rosidl_generator_c.so: CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/srv/detail/grasp__functions.c.o
+libdros_common_interfaces__rosidl_generator_c.so: CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/action/detail/navigate_to_pose__functions.c.o
+libdros_common_interfaces__rosidl_generator_c.so: CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/rosidl_generator_c/dros_common_interfaces/action/detail/dexterous_hand__functions.c.o
 libdros_common_interfaces__rosidl_generator_c.so: CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/build.make
 libdros_common_interfaces__rosidl_generator_c.so: /opt/ros/humble/lib/libsensor_msgs__rosidl_generator_c.so
+libdros_common_interfaces__rosidl_generator_c.so: /opt/ros/humble/lib/libaction_msgs__rosidl_generator_c.so
+libdros_common_interfaces__rosidl_generator_c.so: /opt/ros/humble/lib/libnav_msgs__rosidl_generator_c.so
+libdros_common_interfaces__rosidl_generator_c.so: /opt/ros/humble/lib/libgeographic_msgs__rosidl_generator_c.so
 libdros_common_interfaces__rosidl_generator_c.so: /opt/ros/humble/lib/libgeometry_msgs__rosidl_generator_c.so
 libdros_common_interfaces__rosidl_generator_c.so: /opt/ros/humble/lib/libstd_msgs__rosidl_generator_c.so
 libdros_common_interfaces__rosidl_generator_c.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_generator_c.so
+libdros_common_interfaces__rosidl_generator_c.so: /opt/ros/humble/lib/libunique_identifier_msgs__rosidl_generator_c.so
 libdros_common_interfaces__rosidl_generator_c.so: /opt/ros/humble/lib/librosidl_runtime_c.so
 libdros_common_interfaces__rosidl_generator_c.so: /opt/ros/humble/lib/librcutils.so
 libdros_common_interfaces__rosidl_generator_c.so: CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking C shared library libdros_common_interfaces__rosidl_generator_c.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking C shared library libdros_common_interfaces__rosidl_generator_c.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -357,6 +492,16 @@ CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/clean:
 	$(CMAKE_COMMAND) -P CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/cmake_clean.cmake
 .PHONY : CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/clean
 
+CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/dros_common_interfaces/action/detail/dexterous_hand__functions.c
+CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/dros_common_interfaces/action/detail/dexterous_hand__functions.h
+CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/dros_common_interfaces/action/detail/dexterous_hand__struct.h
+CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/dros_common_interfaces/action/detail/dexterous_hand__type_support.h
+CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/dros_common_interfaces/action/detail/navigate_to_pose__functions.c
+CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/dros_common_interfaces/action/detail/navigate_to_pose__functions.h
+CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/dros_common_interfaces/action/detail/navigate_to_pose__struct.h
+CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/dros_common_interfaces/action/detail/navigate_to_pose__type_support.h
+CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/dros_common_interfaces/action/dexterous_hand.h
+CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/dros_common_interfaces/action/navigate_to_pose.h
 CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/dros_common_interfaces/msg/detail/extrinsics__functions.c
 CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/dros_common_interfaces/msg/detail/extrinsics__functions.h
 CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/dros_common_interfaces/msg/detail/extrinsics__struct.h
@@ -381,7 +526,12 @@ CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/depend: rosidl_generat
 CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/dros_common_interfaces/srv/detail/device_info__functions.h
 CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/dros_common_interfaces/srv/detail/device_info__struct.h
 CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/dros_common_interfaces/srv/detail/device_info__type_support.h
+CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/dros_common_interfaces/srv/detail/grasp__functions.c
+CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/dros_common_interfaces/srv/detail/grasp__functions.h
+CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/dros_common_interfaces/srv/detail/grasp__struct.h
+CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/dros_common_interfaces/srv/detail/grasp__type_support.h
 CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/dros_common_interfaces/srv/device_info.h
-	cd /home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces /home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces /home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces /home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces /home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces/CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/DependInfo.cmake --color=$(COLOR)
+CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/dros_common_interfaces/srv/grasp.h
+	cd /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces/CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/dros_common_interfaces__rosidl_generator_c.dir/depend
 

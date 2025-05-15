@@ -1,6 +1,7 @@
 #include <rclcpp/rclcpp.hpp>
 #include "dros_common_interfaces/msg/rgbd.hpp"
 #include "auto_sam_interfaces/srv/segment_rgbd.hpp"
+#include "dros_common_interfaces/srv/grasp.hpp"
 
 #include "geometry_msgs/msg/pose_stamped.hpp"
 #include <cv_bridge/cv_bridge.h>
@@ -20,9 +21,13 @@
 
 #include <filesystem>
 #include <algorithm>
+#include <mutex>
+#include <condition_variable>
 
 using namespace inference_core;
 using namespace detection_6d;
+
+using Grasp = dros_common_interfaces::srv::Grasp;
 
 static const std::string demo_name_ = "fdp_ros2";
 
@@ -36,6 +41,9 @@ class FoundationPoseService : public rclcpp::Node
       while (!client_->wait_for_service(std::chrono::seconds(1))) {
         RCLCPP_INFO(this->get_logger(), "Waiting for SegmentRGBD service...");
       }
+
+      grasp_service_ = this->create_service<Grasp>("grasp", std::bind(&FoundationPoseService::grasp_callback, 
+          this, std::placeholders::_1, std::placeholders::_2));
 
       sub_rgbd_ = this->create_subscription<dros_common_interfaces::msg::RGBD>(
         "camera/rgbd", 10, std::bind(&FoundationPoseService::rgbd_callback, this, std::placeholders::_1));
@@ -160,75 +168,65 @@ class FoundationPoseService : public rclcpp::Node
 
     }
 
-
   private:
-    rclcpp::Client<auto_sam_interfaces::srv::SegmentRGBD>::SharedPtr client_;
+      // grasp 回调
+      void grasp_callback(const std::shared_ptr<Grasp::Request>& request, const std::shared_ptr<Grasp::Response>& response) {
+        RCLCPP_INFO(this->get_logger(), "收到决策节点任务");
+        RCLCPP_INFO(this->get_logger(), "等待抓取物品: %s", request->object_name.c_str());
 
-    rclcpp::Subscription<dros_common_interfaces::msg::RGBD>::SharedPtr sub_rgbd_;
-    rclcpp::Publisher<geometry_msgs::msg::PoseStamped>::SharedPtr pub_pose_;
-    rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr pub_debug_image_;
-
-    std::vector<std::string> obj_type_to_grasp = {"cup_tripple", "EM2E_left", "water_ybs"};
-    int type_num_track = 1;
-    std::string template_dir = "../auto_sam_service/template/grasp_bottle";
-    std::vector<std::string> mesh_files;
-
-    // FoundationPose相关
-    Eigen::Matrix4f last_pose_;
-    bool is_initialized_ = false;
-    std::vector<std::pair<std::shared_ptr<Base6DofDetectionModel>, std::shared_ptr<BaseMeshLoader>>> model_to_track_;
-
-    // 参数
-    std::string refiner_engine_path_;
-    std::string scorer_engine_path_;
-    int refine_itr_;
-
-    int frame_id = 0;
-    std::string debug_dir = "./det_res/pose/";
-
-    Eigen::Matrix3f rgb_K;
-    Eigen::Vector3f object_dimension;
-
-    Eigen::Matrix4f out_pose;
-    Eigen::Matrix4f track_pose;
-
-    void rgbd_callback(const dros_common_interfaces::msg::RGBD::SharedPtr msg) {    
-      RCLCPP_INFO(this->get_logger(), "收到RGBD数据");
-
-      // TODO: 处理RGBD数据
-      std_msgs::msg::Header header = msg->header;
-      RCLCPP_INFO(this->get_logger(), "get frame_id:%s", header.frame_id.c_str());
-      RCLCPP_INFO(this->get_logger(), "get stamp:%d", header.stamp.sec);
-      
-      const sensor_msgs::msg::CameraInfo& rgb_info = msg->rgb_camera_info;
-      this->rgb_K << rgb_info.k[0], rgb_info.k[1], rgb_info.k[2],
-               rgb_info.k[3], rgb_info.k[4], rgb_info.k[5],
-               rgb_info.k[6], rgb_info.k[7], rgb_info.k[8];
-      RCLCPP_INFO(this->get_logger(), "RGB Camera fx: %f, fy: %f, cx: %f, cy: %f",
-                  rgb_info.k[0], rgb_info.k[4], rgb_info.k[2], rgb_info.k[5]);
-      
-      cv::Mat rgb_img;
-      try {
-        rgb_img = cv_bridge::toCvCopy(msg->rgb, sensor_msgs::image_encodings::RGB8)->image;
-      } catch (cv_bridge::Exception& e) {
-        RCLCPP_ERROR(this->get_logger(), "cv_bridge RGB 转换失败: %s", e.what());
-        return;
-      }
-    
-      cv::Mat depth_img;
-      try {
-        // depth_img = cv_bridge::toCvCopy(msg->depth, sensor_msgs::image_encodings::TYPE_16UC1)->image;
-        // depth_img.convertTo(depth_img, CV_32FC1, 0.001);
-        depth_img = cv_bridge::toCvCopy(msg->depth, sensor_msgs::image_encodings::TYPE_32FC1)->image;
-      } catch (cv_bridge::Exception& e) {
-        RCLCPP_ERROR(this->get_logger(), "cv_bridge Depth 转换失败: %s", e.what());
-        return;
+        sub_rgbd_ = this->create_subscription<dros_common_interfaces::msg::RGBD>(
+        "camera/rgbd", 10, std::bind(&FoundationPoseService::rgbd_callback, this, std::placeholders::_1));
+        // 阻塞等待抓取结果
+        std::unique_lock<std::mutex> lock(mtx_);
+        cv_.wait(lock, [this] { return grasp_done_; });
+        if(grasp_done_) {
+          response->err_code = grasp_result_.err_code;
+          response->err_msg = grasp_result_.err_msg;
+          grasp_done_ = false;
+        } else {
+          response->err_code = -1;
+          response->err_msg = "未收到抓取结果";
+        }
+        //lock.unlock();  // 会自动解锁
       }
 
-      RCLCPP_INFO(this->get_logger(), "RGB 图尺寸: %dx%d", rgb_img.cols, rgb_img.rows);
-      RCLCPP_INFO(this->get_logger(), "Depth 图尺寸: %dx%d", depth_img.cols, depth_img.rows);
+      // rgbd 订阅回调
+      void rgbd_callback(const dros_common_interfaces::msg::RGBD::SharedPtr msg) {    
+        RCLCPP_INFO(this->get_logger(), "收到RGBD数据");
+        // TODO: 处理RGBD数据
+        std_msgs::msg::Header header = msg->header;
+        RCLCPP_INFO(this->get_logger(), "get frame_id:%s", header.frame_id.c_str());
+        RCLCPP_INFO(this->get_logger(), "get stamp:%d", header.stamp.sec);
+        
+        const sensor_msgs::msg::CameraInfo& rgb_info = msg->rgb_camera_info;
+        this->rgb_K << rgb_info.k[0], rgb_info.k[1], rgb_info.k[2],
+                rgb_info.k[3], rgb_info.k[4], rgb_info.k[5],
+                rgb_info.k[6], rgb_info.k[7], rgb_info.k[8];
+        RCLCPP_INFO(this->get_logger(), "RGB Camera fx: %f, fy: %f, cx: %f, cy: %f",
+                    rgb_info.k[0], rgb_info.k[4], rgb_info.k[2], rgb_info.k[5]);
+        
+        cv::Mat rgb_img;
+        try {
+          rgb_img = cv_bridge::toCvCopy(msg->rgb, sensor_msgs::image_encodings::RGB8)->image;
+        } catch (cv_bridge::Exception& e) {
+          RCLCPP_ERROR(this->get_logger(), "cv_bridge RGB 转换失败: %s", e.what());
+          return;
+        }
+      
+        cv::Mat depth_img;
+        try {
+          // depth_img = cv_bridge::toCvCopy(msg->depth, sensor_msgs::image_encodings::TYPE_16UC1)->image;
+          // depth_img.convertTo(depth_img, CV_32FC1, 0.001);
+          depth_img = cv_bridge::toCvCopy(msg->depth, sensor_msgs::image_encodings::TYPE_32FC1)->image;
+        } catch (cv_bridge::Exception& e) {
+          RCLCPP_ERROR(this->get_logger(), "cv_bridge Depth 转换失败: %s", e.what());
+          return;
+        }
 
-      this->foundation_pose_main(rgb_img, depth_img, header.stamp.sec, header.stamp.nanosec);
+        RCLCPP_INFO(this->get_logger(), "RGB 图尺寸: %dx%d", rgb_img.cols, rgb_img.rows);
+        RCLCPP_INFO(this->get_logger(), "Depth 图尺寸: %dx%d", depth_img.cols, depth_img.rows);
+
+        this->foundation_pose_main(rgb_img, depth_img, header.stamp.sec, header.stamp.nanosec);
     }
 
     void response_callback(rclcpp::Client<auto_sam_interfaces::srv::SegmentRGBD>::SharedFuture future)
@@ -267,7 +265,54 @@ class FoundationPoseService : public rclcpp::Node
           this->model_to_track_.emplace_back(foundation_pose, mesh_loader);
         }
       }
+      // 全部处理完成后，需要给上游决策节点回复结果
+      {
+        std::lock_guard<std::mutex> lock(mtx_);
+        grasp_result_.err_code = 0;
+        grasp_result_.err_msg = "success";
+        grasp_done_ = true;
+      }
+      cv_.notify_one();
     }
+
+
+  private:
+    rclcpp::Client<auto_sam_interfaces::srv::SegmentRGBD>::SharedPtr client_;  // auto sam 客户端
+    rclcpp::Service<Grasp>::SharedPtr grasp_service_;   // 决策节点任务下发
+
+    rclcpp::Subscription<dros_common_interfaces::msg::RGBD>::SharedPtr sub_rgbd_;  // RGBD订阅
+    rclcpp::Publisher<geometry_msgs::msg::PoseStamped>::SharedPtr pub_pose_;
+    rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr pub_debug_image_;
+
+    std::vector<std::string> obj_type_to_grasp = {"cup_tripple", "EM2E_left", "water_ybs"};
+    int type_num_track = 1;
+    std::string template_dir = "../auto_sam_service/template/grasp_bottle";
+    std::vector<std::string> mesh_files;
+
+    // FoundationPose相关
+    Eigen::Matrix4f last_pose_;
+    bool is_initialized_ = false;
+    std::vector<std::pair<std::shared_ptr<Base6DofDetectionModel>, std::shared_ptr<BaseMeshLoader>>> model_to_track_;
+
+    // 参数
+    std::string refiner_engine_path_;
+    std::string scorer_engine_path_;
+    int refine_itr_;
+
+    int frame_id = 0;
+    std::string debug_dir = "./det_res/pose/";
+
+    Eigen::Matrix3f rgb_K;
+    Eigen::Vector3f object_dimension;
+
+    Eigen::Matrix4f out_pose;
+    Eigen::Matrix4f track_pose;
+
+    //同步机制
+    Grasp grasp_result_;
+    std::mutex mtx_;
+    std::condition_variable cv_;
+    bool grasp_done_ = false;
 
 };
 

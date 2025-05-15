@@ -13,6 +13,10 @@ find_package(rosidl_default_generators REQUIRED)
 find_package(builtin_interfaces REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
+find_package(nav_msgs REQUIRED)
+find_package(geometry_msgs REQUIRED)
+find_package(geographic_msgs)
+find_package(action_msgs REQUIRED)
 
 # generate msg headers
 set(msg_files
@@ -25,14 +29,19 @@ set(msg_files
 # generate srv headers
 set(srv_files
   "srv/realsense/DeviceInfo.srv"
+  "srv/Grasp.srv"
 )
 
 # generate action headers
+set(action_files
+  "action/nav2/NavigateToPose.action"
+  "action/DexterousHand.action")
 
 rosidl_generate_interfaces(${PROJECT_NAME}
   ${msg_files}
   ${srv_files}
-  DEPENDENCIES builtin_interfaces std_msgs sensor_msgs
+  ${action_files}
+  DEPENDENCIES builtin_interfaces std_msgs sensor_msgs geometry_msgs action_msgs nav_msgs geographic_msgs
   ADD_LINTER_TESTS
 )
 

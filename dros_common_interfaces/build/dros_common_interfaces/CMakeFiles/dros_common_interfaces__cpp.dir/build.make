@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces
+CMAKE_SOURCE_DIR = /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces
+CMAKE_BINARY_DIR = /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces
 
 # Utility rule file for dros_common_interfaces__cpp.
 
@@ -91,6 +91,21 @@ CMakeFiles/dros_common_interfaces__cpp: rosidl_generator_cpp/dros_common_interfa
 CMakeFiles/dros_common_interfaces__cpp: rosidl_generator_cpp/dros_common_interfaces/srv/detail/device_info__struct.hpp
 CMakeFiles/dros_common_interfaces__cpp: rosidl_generator_cpp/dros_common_interfaces/srv/detail/device_info__traits.hpp
 CMakeFiles/dros_common_interfaces__cpp: rosidl_generator_cpp/dros_common_interfaces/srv/detail/device_info__type_support.hpp
+CMakeFiles/dros_common_interfaces__cpp: rosidl_generator_cpp/dros_common_interfaces/srv/grasp.hpp
+CMakeFiles/dros_common_interfaces__cpp: rosidl_generator_cpp/dros_common_interfaces/srv/detail/grasp__builder.hpp
+CMakeFiles/dros_common_interfaces__cpp: rosidl_generator_cpp/dros_common_interfaces/srv/detail/grasp__struct.hpp
+CMakeFiles/dros_common_interfaces__cpp: rosidl_generator_cpp/dros_common_interfaces/srv/detail/grasp__traits.hpp
+CMakeFiles/dros_common_interfaces__cpp: rosidl_generator_cpp/dros_common_interfaces/srv/detail/grasp__type_support.hpp
+CMakeFiles/dros_common_interfaces__cpp: rosidl_generator_cpp/dros_common_interfaces/action/navigate_to_pose.hpp
+CMakeFiles/dros_common_interfaces__cpp: rosidl_generator_cpp/dros_common_interfaces/action/detail/navigate_to_pose__builder.hpp
+CMakeFiles/dros_common_interfaces__cpp: rosidl_generator_cpp/dros_common_interfaces/action/detail/navigate_to_pose__struct.hpp
+CMakeFiles/dros_common_interfaces__cpp: rosidl_generator_cpp/dros_common_interfaces/action/detail/navigate_to_pose__traits.hpp
+CMakeFiles/dros_common_interfaces__cpp: rosidl_generator_cpp/dros_common_interfaces/action/detail/navigate_to_pose__type_support.hpp
+CMakeFiles/dros_common_interfaces__cpp: rosidl_generator_cpp/dros_common_interfaces/action/dexterous_hand.hpp
+CMakeFiles/dros_common_interfaces__cpp: rosidl_generator_cpp/dros_common_interfaces/action/detail/dexterous_hand__builder.hpp
+CMakeFiles/dros_common_interfaces__cpp: rosidl_generator_cpp/dros_common_interfaces/action/detail/dexterous_hand__struct.hpp
+CMakeFiles/dros_common_interfaces__cpp: rosidl_generator_cpp/dros_common_interfaces/action/detail/dexterous_hand__traits.hpp
+CMakeFiles/dros_common_interfaces__cpp: rosidl_generator_cpp/dros_common_interfaces/action/detail/dexterous_hand__type_support.hpp
 CMakeFiles/dros_common_interfaces__cpp: rosidl_generator_cpp/dros_common_interfaces/msg/rosidl_generator_cpp__visibility_control.hpp
 
 rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp: /opt/ros/humble/lib/rosidl_generator_cpp/rosidl_generator_cpp
@@ -113,6 +128,9 @@ rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp: rosidl_adapter/dro
 rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp: rosidl_adapter/dros_common_interfaces/msg/Metadata.idl
 rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp: rosidl_adapter/dros_common_interfaces/msg/RGBD.idl
 rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp: rosidl_adapter/dros_common_interfaces/srv/DeviceInfo.idl
+rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp: rosidl_adapter/dros_common_interfaces/srv/Grasp.idl
+rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp: rosidl_adapter/dros_common_interfaces/action/NavigateToPose.idl
+rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp: rosidl_adapter/dros_common_interfaces/action/DexterousHand.idl
 rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp: /opt/ros/humble/share/builtin_interfaces/msg/Duration.idl
 rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp: /opt/ros/humble/share/builtin_interfaces/msg/Time.idl
 rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp: /opt/ros/humble/share/std_msgs/msg/Bool.idl
@@ -203,8 +221,43 @@ rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp: /opt/ros/humble/sh
 rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp: /opt/ros/humble/share/geometry_msgs/msg/VelocityStamped.idl
 rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp: /opt/ros/humble/share/geometry_msgs/msg/Wrench.idl
 rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp: /opt/ros/humble/share/geometry_msgs/msg/WrenchStamped.idl
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C++ code for ROS interfaces"
-	/usr/bin/python3 /opt/ros/humble/share/rosidl_generator_cpp/cmake/../../../lib/rosidl_generator_cpp/rosidl_generator_cpp --generator-arguments-file /home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces/rosidl_generator_cpp__arguments.json
+rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp: /opt/ros/humble/share/action_msgs/msg/GoalInfo.idl
+rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp: /opt/ros/humble/share/action_msgs/msg/GoalStatus.idl
+rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp: /opt/ros/humble/share/action_msgs/msg/GoalStatusArray.idl
+rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp: /opt/ros/humble/share/action_msgs/srv/CancelGoal.idl
+rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp: /opt/ros/humble/share/unique_identifier_msgs/msg/UUID.idl
+rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp: /opt/ros/humble/share/nav_msgs/msg/Goals.idl
+rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp: /opt/ros/humble/share/nav_msgs/msg/GridCells.idl
+rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp: /opt/ros/humble/share/nav_msgs/msg/MapMetaData.idl
+rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp: /opt/ros/humble/share/nav_msgs/msg/OccupancyGrid.idl
+rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp: /opt/ros/humble/share/nav_msgs/msg/Odometry.idl
+rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp: /opt/ros/humble/share/nav_msgs/msg/Path.idl
+rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp: /opt/ros/humble/share/nav_msgs/srv/GetMap.idl
+rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp: /opt/ros/humble/share/nav_msgs/srv/GetPlan.idl
+rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp: /opt/ros/humble/share/nav_msgs/srv/LoadMap.idl
+rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp: /opt/ros/humble/share/nav_msgs/srv/SetMap.idl
+rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp: /opt/ros/humble/share/geographic_msgs/msg/BoundingBox.idl
+rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp: /opt/ros/humble/share/geographic_msgs/msg/GeographicMapChanges.idl
+rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp: /opt/ros/humble/share/geographic_msgs/msg/GeographicMap.idl
+rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp: /opt/ros/humble/share/geographic_msgs/msg/GeoPath.idl
+rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp: /opt/ros/humble/share/geographic_msgs/msg/GeoPoint.idl
+rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp: /opt/ros/humble/share/geographic_msgs/msg/GeoPointStamped.idl
+rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp: /opt/ros/humble/share/geographic_msgs/msg/GeoPose.idl
+rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp: /opt/ros/humble/share/geographic_msgs/msg/GeoPoseStamped.idl
+rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp: /opt/ros/humble/share/geographic_msgs/msg/GeoPoseWithCovariance.idl
+rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp: /opt/ros/humble/share/geographic_msgs/msg/GeoPoseWithCovarianceStamped.idl
+rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp: /opt/ros/humble/share/geographic_msgs/msg/KeyValue.idl
+rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp: /opt/ros/humble/share/geographic_msgs/msg/MapFeature.idl
+rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp: /opt/ros/humble/share/geographic_msgs/msg/RouteNetwork.idl
+rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp: /opt/ros/humble/share/geographic_msgs/msg/RoutePath.idl
+rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp: /opt/ros/humble/share/geographic_msgs/msg/RouteSegment.idl
+rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp: /opt/ros/humble/share/geographic_msgs/msg/WayPoint.idl
+rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp: /opt/ros/humble/share/geographic_msgs/srv/GetGeographicMap.idl
+rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp: /opt/ros/humble/share/geographic_msgs/srv/GetGeoPath.idl
+rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp: /opt/ros/humble/share/geographic_msgs/srv/GetRoutePlan.idl
+rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp: /opt/ros/humble/share/geographic_msgs/srv/UpdateGeographicMap.idl
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C++ code for ROS interfaces"
+	/usr/bin/python3 /opt/ros/humble/share/rosidl_generator_cpp/cmake/../../../lib/rosidl_generator_cpp/rosidl_generator_cpp --generator-arguments-file /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces/rosidl_generator_cpp__arguments.json
 
 rosidl_generator_cpp/dros_common_interfaces/msg/detail/imu_info__builder.hpp: rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/dros_common_interfaces/msg/detail/imu_info__builder.hpp
@@ -278,7 +331,62 @@ rosidl_generator_cpp/dros_common_interfaces/srv/detail/device_info__traits.hpp: 
 rosidl_generator_cpp/dros_common_interfaces/srv/detail/device_info__type_support.hpp: rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/dros_common_interfaces/srv/detail/device_info__type_support.hpp
 
+rosidl_generator_cpp/dros_common_interfaces/srv/grasp.hpp: rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/dros_common_interfaces/srv/grasp.hpp
+
+rosidl_generator_cpp/dros_common_interfaces/srv/detail/grasp__builder.hpp: rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/dros_common_interfaces/srv/detail/grasp__builder.hpp
+
+rosidl_generator_cpp/dros_common_interfaces/srv/detail/grasp__struct.hpp: rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/dros_common_interfaces/srv/detail/grasp__struct.hpp
+
+rosidl_generator_cpp/dros_common_interfaces/srv/detail/grasp__traits.hpp: rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/dros_common_interfaces/srv/detail/grasp__traits.hpp
+
+rosidl_generator_cpp/dros_common_interfaces/srv/detail/grasp__type_support.hpp: rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/dros_common_interfaces/srv/detail/grasp__type_support.hpp
+
+rosidl_generator_cpp/dros_common_interfaces/action/navigate_to_pose.hpp: rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/dros_common_interfaces/action/navigate_to_pose.hpp
+
+rosidl_generator_cpp/dros_common_interfaces/action/detail/navigate_to_pose__builder.hpp: rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/dros_common_interfaces/action/detail/navigate_to_pose__builder.hpp
+
+rosidl_generator_cpp/dros_common_interfaces/action/detail/navigate_to_pose__struct.hpp: rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/dros_common_interfaces/action/detail/navigate_to_pose__struct.hpp
+
+rosidl_generator_cpp/dros_common_interfaces/action/detail/navigate_to_pose__traits.hpp: rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/dros_common_interfaces/action/detail/navigate_to_pose__traits.hpp
+
+rosidl_generator_cpp/dros_common_interfaces/action/detail/navigate_to_pose__type_support.hpp: rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/dros_common_interfaces/action/detail/navigate_to_pose__type_support.hpp
+
+rosidl_generator_cpp/dros_common_interfaces/action/dexterous_hand.hpp: rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/dros_common_interfaces/action/dexterous_hand.hpp
+
+rosidl_generator_cpp/dros_common_interfaces/action/detail/dexterous_hand__builder.hpp: rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/dros_common_interfaces/action/detail/dexterous_hand__builder.hpp
+
+rosidl_generator_cpp/dros_common_interfaces/action/detail/dexterous_hand__struct.hpp: rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/dros_common_interfaces/action/detail/dexterous_hand__struct.hpp
+
+rosidl_generator_cpp/dros_common_interfaces/action/detail/dexterous_hand__traits.hpp: rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/dros_common_interfaces/action/detail/dexterous_hand__traits.hpp
+
+rosidl_generator_cpp/dros_common_interfaces/action/detail/dexterous_hand__type_support.hpp: rosidl_generator_cpp/dros_common_interfaces/msg/imu_info.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/dros_common_interfaces/action/detail/dexterous_hand__type_support.hpp
+
 dros_common_interfaces__cpp: CMakeFiles/dros_common_interfaces__cpp
+dros_common_interfaces__cpp: rosidl_generator_cpp/dros_common_interfaces/action/detail/dexterous_hand__builder.hpp
+dros_common_interfaces__cpp: rosidl_generator_cpp/dros_common_interfaces/action/detail/dexterous_hand__struct.hpp
+dros_common_interfaces__cpp: rosidl_generator_cpp/dros_common_interfaces/action/detail/dexterous_hand__traits.hpp
+dros_common_interfaces__cpp: rosidl_generator_cpp/dros_common_interfaces/action/detail/dexterous_hand__type_support.hpp
+dros_common_interfaces__cpp: rosidl_generator_cpp/dros_common_interfaces/action/detail/navigate_to_pose__builder.hpp
+dros_common_interfaces__cpp: rosidl_generator_cpp/dros_common_interfaces/action/detail/navigate_to_pose__struct.hpp
+dros_common_interfaces__cpp: rosidl_generator_cpp/dros_common_interfaces/action/detail/navigate_to_pose__traits.hpp
+dros_common_interfaces__cpp: rosidl_generator_cpp/dros_common_interfaces/action/detail/navigate_to_pose__type_support.hpp
+dros_common_interfaces__cpp: rosidl_generator_cpp/dros_common_interfaces/action/dexterous_hand.hpp
+dros_common_interfaces__cpp: rosidl_generator_cpp/dros_common_interfaces/action/navigate_to_pose.hpp
 dros_common_interfaces__cpp: rosidl_generator_cpp/dros_common_interfaces/msg/detail/extrinsics__builder.hpp
 dros_common_interfaces__cpp: rosidl_generator_cpp/dros_common_interfaces/msg/detail/extrinsics__struct.hpp
 dros_common_interfaces__cpp: rosidl_generator_cpp/dros_common_interfaces/msg/detail/extrinsics__traits.hpp
@@ -303,7 +411,12 @@ dros_common_interfaces__cpp: rosidl_generator_cpp/dros_common_interfaces/srv/det
 dros_common_interfaces__cpp: rosidl_generator_cpp/dros_common_interfaces/srv/detail/device_info__struct.hpp
 dros_common_interfaces__cpp: rosidl_generator_cpp/dros_common_interfaces/srv/detail/device_info__traits.hpp
 dros_common_interfaces__cpp: rosidl_generator_cpp/dros_common_interfaces/srv/detail/device_info__type_support.hpp
+dros_common_interfaces__cpp: rosidl_generator_cpp/dros_common_interfaces/srv/detail/grasp__builder.hpp
+dros_common_interfaces__cpp: rosidl_generator_cpp/dros_common_interfaces/srv/detail/grasp__struct.hpp
+dros_common_interfaces__cpp: rosidl_generator_cpp/dros_common_interfaces/srv/detail/grasp__traits.hpp
+dros_common_interfaces__cpp: rosidl_generator_cpp/dros_common_interfaces/srv/detail/grasp__type_support.hpp
 dros_common_interfaces__cpp: rosidl_generator_cpp/dros_common_interfaces/srv/device_info.hpp
+dros_common_interfaces__cpp: rosidl_generator_cpp/dros_common_interfaces/srv/grasp.hpp
 dros_common_interfaces__cpp: CMakeFiles/dros_common_interfaces__cpp.dir/build.make
 .PHONY : dros_common_interfaces__cpp
 
@@ -316,6 +429,6 @@ CMakeFiles/dros_common_interfaces__cpp.dir/clean:
 .PHONY : CMakeFiles/dros_common_interfaces__cpp.dir/clean
 
 CMakeFiles/dros_common_interfaces__cpp.dir/depend:
-	cd /home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces /home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces /home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces /home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces /home/d30031852276/wh134_dev/realsense/dros/dros_common_interfaces/build/dros_common_interfaces/CMakeFiles/dros_common_interfaces__cpp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces /home/hawrk/Documents/GitHub/hawrk/foudationpose_cpp_ros2/dros_common_interfaces/build/dros_common_interfaces/CMakeFiles/dros_common_interfaces__cpp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/dros_common_interfaces__cpp.dir/depend
 

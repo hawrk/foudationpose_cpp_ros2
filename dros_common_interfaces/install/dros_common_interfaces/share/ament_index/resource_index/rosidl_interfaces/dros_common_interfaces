@@ -1,7 +1,11 @@
+action/DexterousHand.action
+action/DexterousHand.idl
+action/NavigateToPose.idl
 msg/Extrinsics.idl
 msg/IMUInfo.idl
 msg/Metadata.idl
 msg/RGBD.idl
+nav2/NavigateToPose.action
 realsense/DeviceInfo.srv
 realsense/DeviceInfo_Request.msg
 realsense/DeviceInfo_Response.msg
@@ -10,3 +14,7 @@ realsense/IMUInfo.msg
 realsense/Metadata.msg
 realsense/RGBD.msg
 srv/DeviceInfo.idl
+srv/Grasp.idl
+srv/Grasp.srv
+srv/Grasp_Request.msg
+srv/Grasp_Response.msg
