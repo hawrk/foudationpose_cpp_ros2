@@ -19,6 +19,10 @@ class GraspClientNode : public rclcpp::Node {
       this->client_ = this->create_client<Grasp>("grasp");
       while(!this->client_->wait_for_service(std::chrono::seconds(1))) {
         RCLCPP_INFO(this->get_logger(), "Waiting for grasp service to be available...");
+        if(!rclcpp::ok()) {
+          RCLCPP_ERROR(this->get_logger(), "Interrupted while waiting for service");
+          return;
+        }
       }
 
       auto request = std::make_shared<Grasp::Request>();
